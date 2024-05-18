@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Subcategory;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -11,9 +12,11 @@ class ProductController extends Controller
   public function product_index(){
     $categories = Category::all();
     $subcategories = Subcategory::all();
+    $brands = Brand::all();
     return view('admin.product.product-index',[
         'categories'=>$categories,
         'subcategories'=>$subcategories,
+        'brands'=>$brands,
     ]);
   }
   public function getsubcategory(Request $request){
