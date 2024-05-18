@@ -1,0 +1,81 @@
+<?php
+
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubcategoryController;
+use App\Http\Controllers\UserController;
+use App\Models\Subcategory;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+// Route::get('/', function () {
+//     return view('welcome');
+// })
+Route::get('/',[FrontendController::class,'index']);
+Route::get('/dashboard', [HomeController::class,'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
+
+
+//Admin Profile Introduce
+
+Route::get('/user/profile',[HomeController::class,'user_profile'])->name('user,profile');
+Route::post('/user/profile/update',[HomeController::class,'user_profile_update'])->name('user.profile.update');
+Route::post('/user/password/update',[HomeController::class,'user_password_update'])->name('user.password.update');
+Route::post('/user/profile/photo',[HomeController::class,'user_profile_photo'])->name('user.profile.photo');
+
+//User list
+Route::get('/user/list',[UserController::class,'user_list'])->name('user.list');
+Route::get('/user/remove/{user_id}',[UserController::class,'user_remove'])->name('user.remove');
+
+//Categoty
+Route::get('/category',[CategoryController::class,'category'])->name('category');
+Route::post('/category/store',[CategoryController::class,'category_store'])->name('category.store');
+Route::get('/category/edit{id}',[CategoryController::class,'category_edit'])->name('category.edit');
+Route::post('/category/update',[CategoryController::class,'category_update'])->name('category.update');
+Route::get('/category/softdelete/{id}',[CategoryController::class,'category_softdelete'])->name('category.softdelete');
+Route::get('/category/trash',[CategoryController::class,'category_trash'])->name('category.trash');
+Route::get('/category/restore/{id}',[CategoryController::class,'category_restore'])->name('category.restort');
+Route::get('category/hard/delete/{id}',[CategoryController::class,'category_hard_delete'])->name('category.hard.delete');
+Route::post('/category/delete/checked',[CategoryController::class,'category_delete_checked'])->name('category.delete.checked');
+Route::post('/category/trash/restore',[CategoryController::class,'category_trash_restore'])->name('category.trash.restore');
+
+
+// Sub Category
+Route::get('/subcategory',[SubcategoryController::class,'subcategory'])->name('subcategory');
+Route::post('/subcategory/store',[SubcategoryController::class,'subcategory_store'])->name('subcategory.store');
+Route::get('/subcategory/edit/{id}',[SubcategoryController::class,'subcategory_edit'])->name('subcategory.edit');
+Route::post('/subcategory/update/{id}',[SubcategoryController::class,'subcategory_update'])->name('subcategory.update');
+Route::get('/subcategory/delete/{id}',[SubcategoryController::class,'subcategory_delete'])->name('subcategory.delete');
+
+//Brand
+Route::get('/brand',[BrandController::class,'brand'])->name('brand');
+Route::post('/brand/store',[BrandController::class,'brand_store'])->name('brand.store');
+Route::get('/brand/edit/{id}',[BrandController::class,'brand_edit'])->name('brand.edit');
+Route::post('/brand/update/{id}',[BrandController::class,'brand_update'])->name('brand.update');
+Route::get('/brand/delete/{id}',[BrandController::class,'brand_delete'])->name('brand.delete');
+
+
+//Product
+Route::get('/product',[ProductController::class,'product_index'])->name('add.product');
+Route::post('/getSubcategory',[ProductController::class,'getsubcategory']);
