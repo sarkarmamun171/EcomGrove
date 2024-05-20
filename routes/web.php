@@ -79,3 +79,4 @@ Route::get('/brand/delete/{id}',[BrandController::class,'brand_delete'])->name('
 //Product
 Route::get('/product',[ProductController::class,'product_index'])->name('add.product');
 Route::post('/getSubcategory',[ProductController::class,'getsubcategory']);
+Route::post('/product/store',[ProductController::class,'product_store'])->name('product.store');
