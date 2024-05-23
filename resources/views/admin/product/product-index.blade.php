@@ -4,8 +4,10 @@
         <div class="card">
             <div class="card-header">
                 <h3>Add New Product</h3>
+                <a href="{{ route('product.list') }}" class="btn btn-primary"><i class="fa-solid fa-list"></i>Product List</a>
             </div>
             <div class="card body">
+
                 @if (session('success'))
                     <div class="alert alert-info">{{ session('success') }}</div>
                 @endif

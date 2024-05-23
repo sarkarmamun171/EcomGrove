@@ -72,4 +72,33 @@ class ProductController extends Controller
         }
     return back()->with('success','Product Added!!');
   }
+  public function product_list(){
+    $products = Product::all();
+    return view('admin.product.product-list',[
+        'products'=>$products,
+    ]);
+  }
+  public function product_delete($id){
+    $product = Product::find($id);
+    $gallery = ProductGallery::where('product_id',$id)->get();
+
+    $preview_image = public_path('uploads/product/previewImage/'.$product->preview_image);
+    unlink($preview_image);
+
+    foreach ($gallery as $gal) {
+        $gal_img = public_path('uploads/product/galleryImage/'.$gal->gallery_image);
+        unlink($gal_img);
+        ProductGallery::find($gal->id)->delete();
+    }
+    Product::find($id)->delete();
+    return back();
+  }
+  public function product_show($id){
+    $products = Product::find($id);
+    $product_galleries = ProductGallery::where('product_id',$id)->get();
+    return view('admin.product.product-show',[
+        'products'=>$products,
+        'product_galleries'=>$product_galleries,
+    ]);
+  }
 }

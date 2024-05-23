@@ -4,6 +4,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubcategoryController;
@@ -80,3 +81,10 @@ Route::get('/brand/delete/{id}',[BrandController::class,'brand_delete'])->name('
 Route::get('/product',[ProductController::class,'product_index'])->name('add.product');
 Route::post('/getSubcategory',[ProductController::class,'getsubcategory']);
 Route::post('/product/store',[ProductController::class,'product_store'])->name('product.store');
+Route::get('/product/list',[ProductController::class,'product_list'])->name('product.list');
+Route::get('/product/show/{id}',[ProductController::class,'product_show'])->name('product.show');
+Route::get('/product/delete/{id}',[ProductController::class,'product_delete'])->name('product.delete');
+
+//Product Inventory
+Route::get('/product/inventory',[InventoryController::class,'inventory'])->name('inventory');
+Route::post('/color/store',[InventoryController::class,'color_store'])->name('color.store');

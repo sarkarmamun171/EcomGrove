@@ -1083,7 +1083,8 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="{{ route('add.product') }}">Add Product</a></li>
-
+                            <li><a href="{{ route('product.list') }}">Product List</a></li>
+                            <li><a href="{{ route('inventory') }}">Product Variation</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
@@ -1193,6 +1194,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/js/selectize.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script src="https://kit.fontawesome.com/56a6d796f4.js" crossorigin="anonymous"></script>
     <script>
         function carouselReview() {
             /*  testimonial one function by = owl.carousel.js */
