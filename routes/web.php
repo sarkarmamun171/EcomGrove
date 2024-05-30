@@ -88,3 +88,9 @@ Route::get('/product/delete/{id}',[ProductController::class,'product_delete'])->
 //Product Inventory
 Route::get('/product/inventory',[InventoryController::class,'inventory'])->name('inventory');
 Route::post('/color/store',[InventoryController::class,'color_store'])->name('color.store');
+Route::post('/size/store',[InventoryController::class,'size_store'])->name('size.store');
+Route::get('/color/remove/{id}',[InventoryController::class,'color_remove'])->name('color.remove');
+Route::get('/size/remove/{id}',[InventoryController::class,'size_remove'])->name('size.remove');
+Route::get('/product/inventory/{id}',[InventoryController::class,'product_inventory'])->name('product.inventory');
+Route::post('product/inventory/store/{id}',[InventoryController::class,'inventory_store'])->name('inventory.store');
+

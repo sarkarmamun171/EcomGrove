@@ -2,16 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Color;
+use App\Models\Inventory;
+use App\Models\Product;
+use App\Models\Size;
 use Illuminate\Support\Carbon;
 
 class InventoryController extends Controller
 {
     public function inventory(){
         $colors = Color::all();
-        return view('admin.product.product-inventory',[
+        $categories = Category::all();
+        return view('admin.product.product-variation',[
             'colors'=>$colors,
+            'categories'=>$categories,
         ]);
     }
     public function color_store(Request $request){
@@ -21,5 +27,40 @@ class InventoryController extends Controller
             'created_at'=>Carbon::now(),
         ]);
         return back()->with('success','Color Added Successfully !!');
+    }
+    public function size_store(Request $request){
+        Size::insert([
+            'category_id'=>$request->category_id,
+            'size_name'=>$request->size_name,
+            'created_at'=>Carbon::now(),
+        ]);
+        return back()->with('size','Size Added Successfully !!');
+    }
+    public function color_remove($id){
+        Color::find($id)->delete();
+        return back();
+    }
+    public function size_remove($id){
+        Size::find($id)->delete();
+        return back();
+    }
+    public function product_inventory($id){
+        $products = Product::find($id);
+        $colors = Color::all();
+        $inventories = Inventory::where('product_id',$id)->get();
+        return view('admin.product.product-inventory',[
+            'products'=>$products,
+            'colors'=>$colors,
+            'inventories'=>$inventories,
+        ]);
+    }
+    public function inventory_store(Request $request,$id){
+        Inventory::insert([
+            'product_id'=>$id,
+            'color_id'=>$request->color_id,
+            'size_id'=>$request->size_id,
+            'quantity'=>$request->quantity,
+        ]);
+        return back()->with('inventory','Inventory Added Successfully');
     }
 }

@@ -35,9 +35,11 @@
                     </td>
                     <td>
                         <div class="d-flex">
-                            <a href="{{ route('product.show',$product->id) }}" class="btn btn-info shadow btn-xs sharp "><i class="fa fa-eye"></i></a>
+                            <a title="Inventory" href="{{ route('product.inventory',$product->id) }}" class="btn btn-success shadow btn-xs sharp "><i class="fa-solid fa-store"></i></a>
                             &nbsp;
-                            <a href="{{ route('product.delete',$product->id) }}" class="btn btn-danger shadow btn-xs sharp "><i class="fa fa-trash"></i></a>
+                            <a title="Show" href="{{ route('product.show',$product->id) }}" class="btn btn-info shadow btn-xs sharp "><i class="fa fa-eye"></i></a>
+                            &nbsp;
+                            <a title="Delete" href="{{ route('product.delete',$product->id) }}" class="btn btn-danger shadow btn-xs sharp "><i class="fa fa-trash"></i></a>
                         </div>
                     </td>
                 </tr>
