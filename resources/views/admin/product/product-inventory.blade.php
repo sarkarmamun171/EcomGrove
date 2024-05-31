@@ -18,6 +18,11 @@
                         <td>{{ $inventory->rel_to_color->color_name }}</td>
                         <td>{{ $inventory->rel_to_size->size_name }}</td>
                         <td>{{ $inventory->quantity }}</td>
+                        <td>
+                            <div class="d-flex">
+                                <a title="Delete" href="" class="btn btn-danger shadow btn-xs sharp "><i class="fa fa-trash"></i></a>
+                            </div>
+                        </td>
                     </tr>
                 @endforeach
             </table>
