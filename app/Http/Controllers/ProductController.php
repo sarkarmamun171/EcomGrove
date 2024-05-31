@@ -73,7 +73,7 @@ class ProductController extends Controller
     return back()->with('success','Product Added!!');
   }
   public function product_list(){
-    $products = Product::all();
+    $products = Product::paginate(5);
     return view('admin.product.product-list',[
         'products'=>$products,
     ]);

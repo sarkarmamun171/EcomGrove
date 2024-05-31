@@ -22,7 +22,7 @@
                 </tr>
                 @foreach ($products as $sl=>$product)
                 <tr>
-                    <td>{{ $sl+1 }}</td>
+                    <td>{{ $products->firstitem()+$sl }}</td>
                     <td>{{ $product->rel_to_category->category_name }}</td>
                     <td>{{ $product->rel_to_subcategory->subcategory_name }}</td>
                     <td>{{ $product->rel_to_brand->brand_name }}</td>
@@ -45,6 +45,7 @@
                 </tr>
                 @endforeach
             </table>
+            {{   $products->links() }}
         </div>
     </div>
 </div>
