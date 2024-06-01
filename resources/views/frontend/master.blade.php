@@ -102,12 +102,9 @@
                                 <div class="category">
                                     <select name="service" class="form-control">
                                         <option disabled="disabled" selected="">All Category</option>
-                                        <option>Men</option>
-                                        <option>Women</option>
-                                        <option>Kids</option>
-                                        <option>Sales</option>
-                                        <option>Perfect Cake</option>
-                                        <option>All Of The Above</option>
+                                        @foreach (App\Models\Category::all() as $category)
+                                        <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="search-box">
@@ -253,60 +250,16 @@
                                     <button class="header-shop-toggle-btn"><span>Shop By Category</span> </button>
                                     <div class="mini-shop-item">
                                         <ul id="metis-menu">
-                                            <li>
-                                                <a href="product.html">Feature Product</a>
-                                            </li>
+                                            @foreach (App\Models\Category::all() as $category)
                                             <li class="header-catagory-item">
-                                                <a class="menu-down-arrow" href="#">Perfunsee & Cologne</a>
+                                                <a class="menu-down-{{ App\Models\Subcategory::where('category_id',$category->id)->count() ==0 ?'':'arrow' }}" href="#">{{ $category->category_name }}</a>
                                                 <ul class="header-catagory-single">
-                                                    <li><a href="#">Men's Clothing</a></li>
-                                                    <li><a href="#">Computer & Office</a></li>
-                                                    <li><a href="#">Jewelry & Watches</a></li>
-                                                    <li><a href="#">Phones & Accessories</a></li>
+                                                        @foreach (App\Models\Subcategory::where('category_id',$category->id)->get() as $subcategory)
+                                                    <li><a href="#">{{ $subcategory->subcategory_name }}</a></li>
+                                                    @endforeach
                                                 </ul>
                                             </li>
-                                            <li>
-                                                <a href="product.html">Best Sellers</a>
-                                            </li>
-                                            <li class="header-catagory-item">
-                                                <a class="menu-down-arrow" href="#">Men Fashion</a>
-                                                <ul class="header-catagory-single">
-                                                    <li><a href="#">Men's Clothing</a></li>
-                                                    <li><a href="#">Computer & Office</a></li>
-                                                    <li><a href="#">Jewelry & Watches</a></li>
-                                                    <li><a href="#">Phones & Accessories</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="product.html">Bags & Shoes</a>
-                                            </li>
-                                            <li class="header-catagory-item">
-                                                <a class="menu-down-arrow" href="#">Women Fashion</a>
-                                                <ul class="header-catagory-single">
-                                                    <li><a href="#">Men's Clothing</a></li>
-                                                    <li><a href="#">Computer & Office</a></li>
-                                                    <li><a href="#">Jewelry & Watches</a></li>
-                                                    <li><a href="#">Phones & Accessories</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="header-catagory-item">
-                                                <a class="menu-down-arrow" href="#">Toys & kids Baby</a>
-                                                <ul class="header-catagory-single">
-                                                    <li><a href="#">Men's Clothing</a></li>
-                                                    <li><a href="#">Computer & Office</a></li>
-                                                    <li><a href="#">Jewelry & Watches</a></li>
-                                                    <li><a href="#">Phones & Accessories</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="product.html">Men's Clothing</a>
-                                            </li>
-                                            <li>
-                                                <a href="product.html">On Sale</a>
-                                            </li>
-                                            <li>
-                                                <a href="product.html">All Accessories</a>
-                                            </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>

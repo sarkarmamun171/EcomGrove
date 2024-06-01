@@ -71,70 +71,26 @@
                     </div>
                 </div>
                 <div class="featured-categorie-slider owl-carousel">
+                    @foreach ($categories as $category)
                     <div class="featured-item">
                         <div class="images">
-                            <img src="{{ asset('frontend') }}/images/featured-categorie/1.png" alt="">
+                            <img style="width:80px!important; margin:auto" src="{{ asset('uploads/category') }}/{{ $category->category_image }}" alt="">
                         </div>
                         <div class="text">
-                            <h2><a href="product.html">Sneakers</a></h2>
+                            <h2>
+                                @if (Str::length($category->category_name)>12)
+                                    <a title="{{ $category->category_name }}" href="">
+                                        {{ Str::substr($category->category_name,0,12).'....' }}
+                                    </a>
+                                @else
+                                <a title="{{ $category->category_name }}" href="">
+                                    {{ $category->category_name }}
+                                </a>
+                                @endif
+                            </h2>
                         </div>
                     </div>
-                    <div class="featured-item">
-                        <div class="images">
-                            <img src="{{ asset('frontend') }}/images/featured-categorie/2.png" alt="">
-                        </div>
-                        <div class="text">
-                            <h2><a href="product.html">Cosmetics</a></h2>
-                        </div>
-                    </div>
-                    <div class="featured-item">
-                        <div class="images">
-                            <img src="{{ asset('frontend') }}/images/featured-categorie/3.png" alt="">
-                        </div>
-                        <div class="text">
-                            <h2><a href="product.html">Bags</a></h2>
-                        </div>
-                    </div>
-                    <div class="featured-item">
-                        <div class="images">
-                            <img src="{{ asset('frontend') }}/images/featured-categorie/4.png" alt="">
-                        </div>
-                        <div class="text">
-                            <h2><a href="product.html">Jackets</a></h2>
-                        </div>
-                    </div>
-                    <div class="featured-item">
-                        <div class="images">
-                            <img src="{{ asset('frontend') }}/images/featured-categorie/5.png" alt="">
-                        </div>
-                        <div class="text">
-                            <h2><a href="product.html">Skin Care</a></h2>
-                        </div>
-                    </div>
-                    <div class="featured-item">
-                        <div class="images">
-                            <img src="{{ asset('frontend') }}/images/featured-categorie/6.png" alt="">
-                        </div>
-                        <div class="text">
-                            <h2><a href="product.html">Jewelry</a></h2>
-                        </div>
-                    </div>
-                    <div class="featured-item">
-                        <div class="images">
-                            <img src="{{ asset('frontend') }}/images/featured-categorie/7.png" alt="">
-                        </div>
-                        <div class="text">
-                            <h2><a href="product.html">Dress</a></h2>
-                        </div>
-                    </div>
-                    <div class="featured-item">
-                        <div class="images">
-                            <img src="{{ asset('frontend') }}/images/featured-categorie/8.png" alt="">
-                        </div>
-                        <div class="text">
-                            <h2><a href="product.html">Kids</a></h2>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
