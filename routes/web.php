@@ -84,6 +84,7 @@ Route::post('/product/store',[ProductController::class,'product_store'])->name('
 Route::get('/product/list',[ProductController::class,'product_list'])->name('product.list');
 Route::get('/product/show/{id}',[ProductController::class,'product_show'])->name('product.show');
 Route::get('/product/delete/{id}',[ProductController::class,'product_delete'])->name('product.delete');
+Route::post('/changeStatus',[ProductController::class.'changeStatus']);
 
 //Product Inventory
 Route::get('/product/inventory',[InventoryController::class,'inventory'])->name('inventory');

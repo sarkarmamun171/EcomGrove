@@ -108,4 +108,7 @@ class ProductController extends Controller
         'product_galleries'=>$product_galleries,
     ]);
   }
+  public function changeStatus(Request $request){
+    echo $request->product_id;
+  }
 }
