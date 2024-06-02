@@ -10,9 +10,10 @@
             <table class="table table-bordered">
                 <tr>
                     <th>SL</th>
+                    <th>Status</th>
                     <th>Category</th>
                     <th>Subcategory</th>
-                    <th>Brand</th>
+                    {{-- <th>Brand</th> --}}
                     <th>Product Name</th>
                     <th>Product Price</th>
                     <th>Discount</th>
@@ -23,9 +24,10 @@
                 @foreach ($products as $sl=>$product)
                 <tr>
                     <td>{{ $products->firstitem()+$sl }}</td>
+                    <td><input type="checkbox" checked data-toggle="toggle" data-size="mini"></td>
                     <td>{{ $product->rel_to_category->category_name }}</td>
                     <td>{{ $product->rel_to_subcategory->subcategory_name }}</td>
-                    <td>{{ $product->rel_to_brand->brand_name }}</td>
+                    {{-- <td>{{ $product->rel_to_brand->brand_name }}</td> --}}
                     <td>{{ $product->product_name }}</td>
                     <td>{{ $product->price }}</td>
                     <td>{{ $product->discount }}</td>
