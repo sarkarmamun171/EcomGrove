@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
+use App\Models\Inventory;
 
 class ProductController extends Controller
 {
@@ -91,6 +92,12 @@ class ProductController extends Controller
         ProductGallery::find($gal->id)->delete();
     }
     Product::find($id)->delete();
+
+    $inventories = Inventory::where('product_id',$id)->get();
+    foreach ($inventories as $inventory) {
+        Inventory::find($inventory->id)->delete();
+    }
+
     return back();
   }
   public function product_show($id){
