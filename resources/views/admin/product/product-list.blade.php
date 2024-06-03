@@ -25,8 +25,7 @@
                     @foreach ($products as $sl => $product)
                         <tr>
                             <td>{{ $products->firstitem() + $sl }}</td>
-                            <td><input type="checkbox" data-toggle="toggle" data-size="mini" class="check"
-                                    data-id="{{ $product->id }}"></td>
+                            <td><input type="checkbox"  data-toggle="toggle" data-size="sm" class="check"  data-id="{{ $product->id }}"{{ $product->status==1?'checked':'' }}></td>
                             <td>{{ $product->rel_to_category->category_name }}</td>
                             <td>{{ $product->rel_to_subcategory->subcategory_name }}</td>
                             {{-- <td>{{ $product->rel_to_brand->brand_name }}</td> --}}
@@ -68,6 +67,7 @@
             }
             var status = $(this).val();
             var product_id = $(this).attr('data-id');
+            // alert(status);
 
             $.ajaxSetup({
                 headers: {
@@ -77,9 +77,9 @@
             $.ajax({
                 type:'POST',
                 url:'/changeStatus',
-                data:{'product_id':product_id,'status':status},
+                data:{product_id:product_id,status:status},
                 success:function(data){
-                    alert(data);
+                    // alert(data);
                 }
             });
         })

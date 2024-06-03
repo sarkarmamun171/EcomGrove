@@ -109,6 +109,9 @@ class ProductController extends Controller
     ]);
   }
   public function changeStatus(Request $request){
-    echo $request->product_id;
+        print_r($request->product_id);
+    // Product::find($request->product_id)->update([
+    //     'status'=>$request->status,
+    // ]);
   }
 }
