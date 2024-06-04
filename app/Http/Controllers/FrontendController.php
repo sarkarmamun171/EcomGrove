@@ -17,7 +17,12 @@ class FrontendController extends Controller
             'products'=>$products,
         ]);
     }
-    public function category_product(){
-        return view('frontend.category_product');
-    }
+    public function category_product($id){
+        $category = Category::find($id);
+        $categories = Product::where('category_id',$id)->get();
+        return view('frontend.category_product',[
+            'categories'=>$categories,
+            'category' => $category,
+        ]);
+}
 }
