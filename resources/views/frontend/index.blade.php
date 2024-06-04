@@ -79,11 +79,11 @@
                         <div class="text">
                             <h2>
                                 @if (Str::length($category->category_name)>12)
-                                    <a title="{{ $category->category_name }}" href="">
+                                    <a title="{{ $category->category_name }}" href="{{ route('category.product',$category->id) }}">
                                         {{ Str::substr($category->category_name,0,12).'....' }}
                                     </a>
                                 @else
-                                <a title="{{ $category->category_name }}" href="">
+                                <a title="{{ $category->category_name }}" href="{{ route('category.product',$category->id) }}">
                                     {{ $category->category_name }}
                                 </a>
                                 @endif

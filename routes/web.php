@@ -27,6 +27,8 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // })
 Route::get('/',[FrontendController::class,'index']);
+Route::get('/category/product/{id}',[FrontendController::class,'category_product'])->name('category.product');
+
 Route::get('/dashboard', [HomeController::class,'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
