@@ -28,6 +28,8 @@ use Illuminate\Support\Facades\Route;
 // })
 Route::get('/',[FrontendController::class,'index']);
 Route::get('/category/product/{id}',[FrontendController::class,'category_product'])->name('category.product');
+Route::get('/subcategory/product/{id}',[FrontendController::class,'subcategory_product'])->name('subcategory.product');
+Route::get('/product/details/{slug}',[FrontendController::class,'product_details'])->name('product.details');
 
 Route::get('/dashboard', [HomeController::class,'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 

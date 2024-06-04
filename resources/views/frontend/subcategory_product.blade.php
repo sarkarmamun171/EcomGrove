@@ -8,7 +8,7 @@
                     <div class="wpo-breadcumb-wrap">
                         <ol class="wpo-breadcumb-wrap">
                             <li><a href="index.html">Home</a></li>
-                            <li>{{ $category->category_name }}</li>
+                            <li>{{ $subcategory->subcategory_name }}</li>
                         </ol>
                     </div>
                 </div>
@@ -20,13 +20,13 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="wpo-section-title">
-                        <h2>{{ $category->category_name }}</h2>
+                        <h2>{{ $subcategory->subcategory_name }}</h2>
                     </div>
                 </div>
             </div>
             <div class="product-wrap">
                 <div class="row">
-                    @forelse ($categories as $product_cate)
+                    @forelse ($subcategories as $product_cate)
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                             <div class="product-item">
                                 <div class="image">
@@ -39,7 +39,7 @@
                                     @endif
                                 </div>
                                 <div class="text">
-                                    <h2><a href="product-single.html">{{ $product_cate->product_name }}</a></h2>
+                                    <h2><a href="product-single.html">{{ $product_cate->subcategory_name }}</a></h2>
                                     <div class="rating-product">
                                         <i class="fi flaticon-star"></i>
                                         <i class="fi flaticon-star"></i>

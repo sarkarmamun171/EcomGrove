@@ -255,7 +255,7 @@
                                                 <a class="menu-down-{{ App\Models\Subcategory::where('category_id',$category->id)->count() ==0 ?'':'arrow' }}" href="#">{{ $category->category_name }}</a>
                                                 <ul class="header-catagory-single">
                                                         @foreach (App\Models\Subcategory::where('category_id',$category->id)->get() as $subcategory)
-                                                    <li><a href="#">{{ $subcategory->subcategory_name }}</a></li>
+                                                    <li><a href="{{ route('subcategory.product',$subcategory->id) }}">{{ $subcategory->subcategory_name }}</a></li>
                                                     @endforeach
                                                 </ul>
                                             </li>

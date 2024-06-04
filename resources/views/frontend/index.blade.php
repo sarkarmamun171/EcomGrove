@@ -160,13 +160,11 @@
                                     @endif
                                 </div>
                                 <div class="text">
-                                    <h2>
-                                        @if (Str::length($product->product_name)>25)
-                                            <a title="{{ $product->product_name }}" href="">
+                                    <h2> <a title="{{ $product->product_name }}" href="{{ route('product.details',$product->slug) }}">
+                                        @if (strlen($product->product_name)>25)
                                                 {{ Str::substr($product->product_name,0,25).'....' }}
                                             </a>
                                         @else
-                                        <a title="{{ $product->product_name }}" href="">
                                             {{ $product->product_name }}
                                         </a>
                                         @endif
