@@ -27,8 +27,6 @@ return new class extends Migration
             $table->longText('additional_information')->nullable();
             $table->string('slug');
             $table->string('preview_image');
-
-
             $table->timestamps();
         });
     }

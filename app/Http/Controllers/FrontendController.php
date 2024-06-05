@@ -39,6 +39,10 @@ class FrontendController extends Controller
     }
     public function product_details($slug)
     {
-        return view('frontend.product-details');
+        $product_id = Product::where('slug',$slug)->first()->id;
+        $product_details = Product::find($product_id);
+        return view('frontend.product-details',[
+            'product_details'=>$product_details,
+        ]);
     }
 }

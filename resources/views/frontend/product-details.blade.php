@@ -60,10 +60,10 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="product-single-content">
-                        <h2>Stylish Pink Coat</h2>
+                        <h2>{{ $product_details->product_name }}</h2>
                         <div class="price">
-                            <span class="present-price">$150.00</span>
-                            <del class="old-price">$200.00</del>
+                            <span class="present-price">&#2547;{{ number_format($product_details->after_discount) }}</span>
+                            <del class="old-price">&#2547;{{ number_format($product_details->price) }}</del>
                         </div>
                         <div class="rating-product">
                             <i class="fi flaticon-star"></i>
