@@ -64,14 +64,15 @@
                                     <ul>
                                         @foreach ($availble_colors as $color)
                                             @if ($color->rel_to_color->color_name == 'NA')
-                                                <li class=""><input checked id="color{{ $color->color_id }}" type="radio"
-                                                        name="color_id" value="30">
+                                                <li class=""><input class="color_id" checked
+                                                        id="color{{ $color->color_id }}" type="radio" name="color_id"
+                                                        value="{{ $color->color_id }}">
                                                     <label for="color{{ $color->color_id }}"
-                                                        style="background-color: transparent;font-size:10px;border:2px solid #000;text-align:center;line-height:26px" >{{ $color->rel_to_color->color_name }}</label>
+                                                        style="background-color: transparent;font-size:10px;border:2px solid #000;text-align:center;line-height:26px">{{ $color->rel_to_color->color_name }}</label>
                                                 </li>
                                             @else
-                                                <li class=""><input id="color{{ $color->color_id }}" type="radio"
-                                                        name="color_id" value="30">
+                                                <li class=""><input class="color_id" id="color{{ $color->color_id }}"
+                                                        type="radio" name="color_id" value="{{ $color->color_id }}">
                                                     <label for="color{{ $color->color_id }}"
                                                         style="background-color: {{ $color->rel_to_color->color_code }}"></label>
                                                 </li>
@@ -86,8 +87,10 @@
                                     <ul>
                                         @foreach ($availble_size as $size)
                                             <li class="">
-                                                <input id="{{ $size->size_id }}" type="radio" name="size_id" value="{{ $size->size_id }}">
-                                                <label for="{{ $size->size_id }}">{{ $size->rel_to_size->size_name }}</label>
+                                                <input id="{{ $size->size_id }}" type="radio" name="size_id"
+                                                    value="{{ $size->size_id }}">
+                                                <label
+                                                    for="{{ $size->size_id }}">{{ $size->rel_to_size->size_name }}</label>
                                             </li>
                                         @endforeach
                                     </ul>
@@ -347,4 +350,27 @@
         </div>
     </div>
     <!-- product-single-section  end-->
+@endsection
+@section('footer_script')
+    <script>
+        $('.color_id').click(function() {
+            var color_id = $(this).val();
+            var product_id = '{{ $product_details->id }}';
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+        $.ajax({
+            url:'/getSize',
+            type:'POST',
+            data:{'color_id':color_id,'product_id':product_id},
+            success:function(data){
+                alert(data);
+            }
+        });
+    });
+    </script>
 @endsection

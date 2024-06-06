@@ -51,4 +51,7 @@ class FrontendController extends Controller
             'availble_size'=>$availble_size,
         ]);
     }
+    public function getSize(Request $request){
+       echo $request->color_id;
+    }
 }
