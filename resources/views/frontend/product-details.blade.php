@@ -23,38 +23,19 @@
                 <div class="col-lg-5">
                     <div class="product-single-img">
                         <div class="product-active owl-carousel">
+                            @foreach (App\Models\ProductGallery::where('product_id',$product_details->id)->get() as $gallery)
                             <div class="item">
-                                <img src="assets/images/product-details/1.jpg" alt="">
+                                <img src="{{ asset('uploads/product/galleryImage') }}/{{ $gallery->gallery_image }}" alt="">
                             </div>
-                            <div class="item">
-                                <img src="assets/images/product-details/2.jpg" alt="">
-                            </div>
-                            <div class="item">
-                                <img src="assets/images/product-details/3.jpg" alt="">
-                            </div>
-                            <div class="item">
-                                <img src="assets/images/product-details/1.jpg" alt="">
-                            </div>
-                            <div class="item">
-                                <img src="assets/images/product-details/2.jpg" alt="">
-                            </div>
+                            @endforeach
                         </div>
                         <div class="product-thumbnil-active  owl-carousel">
+                            @foreach (App\Models\ProductGallery::where('product_id',$product_details->id)->get() as $gallery)
                             <div class="item">
-                                <img src="assets/images/product-details/1.jpg" alt="">
+                                <img src="{{ asset('uploads/product/galleryImage') }}/{{ $gallery->gallery_image }}" alt="">
                             </div>
-                            <div class="item">
-                                <img src="assets/images/product-details/2.jpg" alt="">
-                            </div>
-                            <div class="item">
-                                <img src="assets/images/product-details/3.jpg" alt="">
-                            </div>
-                            <div class="item">
-                                <img src="assets/images/product-details/1.jpg" alt="">
-                            </div>
-                            <div class="item">
-                                <img src="assets/images/product-details/2.jpg" alt="">
-                            </div>
+                            @endforeach
+
                         </div>
                     </div>
                 </div>
@@ -73,14 +54,7 @@
                             <i class="fi flaticon-star"></i>
                             <span>120</span>
                         </div>
-                        <p>Aliquam proin at turpis sollicitudin faucibus.
-                            Non nunc molestie interdum nec sit duis vitae vestibulum id.
-                            Ipsum non donec egestas quis. A habitant tellus nibh blandit.
-                            Faucibus dictumst nibh et aliquet in auctor. Amet ultrices urna ullamcorper
-                            sagittis.
-                            Hendrerit orci ac fusce pulvinar. Diam tincidunt integer eget morbi diam scelerisque
-                            mattis.
-                        </p>
+                        <p>{{ $product_details->short_description }}</p>
                         <div class="product-filter-item color">
                             <div class="color-name">
                                 <span>Color :</span>
@@ -166,31 +140,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="Descriptions-item">
-                                    <p>Amet consectetur proin diam cras egestas augue habitant integer turpis
-                                        egestas egestas. A lectus proin suscipit viverra venenatis eget eget
-                                        libero scelerisque. Lacinia parturient id eu vel justo cursus eu. Libero
-                                        cursus nisl sollicitudin commodo magnis quam ultrices morbi. Et vitae
-                                        eget bibendum quam sed velit. Eget ornare urna nibh ullamcorper sed.
-                                        Habitant adipiscing dignissim aliquet laoreet ultrices etiam nulla sed
-                                        ut. Lectus ut vitae dignissim in cum id id velit egestas. Magna vel leo
-                                        hac massa at.
-
-                                        <br> <br> Urna fermentum id eget turpis eleifend id vitae. Mauris
-                                        malesuada ac arcu adipiscing etiam velit at tortor cras. Lacus eget
-                                        mollis gravida vulputate sed habitasse enim tempor ullamcorper. Dictum
-                                        enim quis morbi tincidunt. Nibh congue massa et arcu viverra lobortis.
-                                        Lectus ullamcorper id ut dictumst odio elit. Tristique dapibus diam
-                                        velit pharetra quisque odio. </p>
-                                    <div class="Description-table">
-                                        <ul>
-                                            <li>While thus cackled sheepishly rigid after due one assenting</li>
-                                            <li>Et vitae eget bibendum quam sed velit. Eget ornare urna nibh ullamcorper sed.</li>
-                                            <li>Habitant adipiscing dignissim aliquet laoreet ultrices etiam nulla sed ut.</li>
-                                            <li>Lacinia parturient id eu vel justo cursus eu.</li>
-                                            <li>Mauris malesuada ac arcu adipiscing etiam velit at tortor cras.</li>
-
-                                        </ul>
-                                    </div>
+                                    {!! $product_details->long_description !!}
                                 </div>
                             </div>
                         </div>
@@ -375,34 +325,7 @@
                         <div class="Additional-wrap">
                             <div class="row">
                                 <div class="col-12">
-                                    <table class="table-responsive">
-                                        <tbody>
-                                            <tr>
-                                                <td>Weight (w/o wheels)</td>
-                                                <td>2 LBS</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Weight Capacity</td>
-                                                <td>60 LBS</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Width</td>
-                                                <td>50″</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Seat back height</td>
-                                                <td>30.4″</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Color</td>
-                                                <td>Black, Blue, Red, White</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Size</td>
-                                                <td>S, M, L, X, XL</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                   {!! $product_details->additional_information !!}
                                 </div>
                             </div>
                         </div>
