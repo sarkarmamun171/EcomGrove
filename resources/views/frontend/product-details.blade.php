@@ -84,12 +84,12 @@
                                 <div class="color-name">
                                     <span>Sizes:</span>
                                     <ul>
-                                        {{-- @foreach ($availble_size as $size) --}}
+                                        @foreach ($availble_size as $size)
                                             <li class="">
-                                                <input id="sz1" type="radio" name="size" value="30">
-                                                {{-- <label for="sz1">{{ $size->rel_to_size->size_name }}</label> --}}
+                                                <input id="{{ $size->size_id }}" type="radio" name="size_id" value="{{ $size->size_id }}">
+                                                <label for="{{ $size->size_id }}">{{ $size->rel_to_size->size_name }}</label>
                                             </li>
-                                        {{-- @endforeach --}}
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
