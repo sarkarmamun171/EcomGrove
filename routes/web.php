@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerAuthController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventoryController;
@@ -101,3 +102,6 @@ Route::get('/size/remove/{id}',[InventoryController::class,'size_remove'])->name
 Route::get('/product/inventory/{id}',[InventoryController::class,'product_inventory'])->name('product.inventory');
 Route::post('product/inventory/store/{id}',[InventoryController::class,'inventory_store'])->name('inventory.store');
 
+//Customer Details
+Route::get('/customer/login',[CustomerAuthController::class,'customer_login'])->name('customer.login');
+Route::get('/customer/register',[CustomerAuthController::class,'customer_register'])->name('customer.register');
