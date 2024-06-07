@@ -105,3 +105,4 @@ Route::post('product/inventory/store/{id}',[InventoryController::class,'inventor
 //Customer Details
 Route::get('/customer/login',[CustomerAuthController::class,'customer_login'])->name('customer.login');
 Route::get('/customer/register',[CustomerAuthController::class,'customer_register'])->name('customer.register');
+Route::post('/customer/store',[CustomerAuthController::class,'customer_store'])->name('customer.store');

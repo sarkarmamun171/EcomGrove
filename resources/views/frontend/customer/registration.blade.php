@@ -46,7 +46,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form class="wpo-accountWrapper" action="#">
+                        <form class="wpo-accountWrapper" action="{{ route('customer.store') }}" method="POST">
+                            @csrf
                             <div class="wpo-accountInfo">
                                 <div class="wpo-accountInfoHeader">
                                     <a href="index.html"><img src="{{ asset('frontend') }}/images/logo-2.svg" alt=""></a>
@@ -68,31 +69,50 @@
                                     <h2>Signup</h2>
                                     <p>Sign into your pages account</p>
                                 </div>
+                                @if (session('success'))
+                                    <div class="alert alert-info">{{ session('success') }}</div>
+                                @endif
                                 <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-12">
-                                        <label for="name">Full Name</label>
-                                        <input type="text" id="name" name="name" placeholder="Your name here..">
+                                    <div class="col-lg-6 col-md-6 col-12">
+                                        <label for="name">First Name</label>
+                                        <input type="text" id="name" name="fname" placeholder="Your name here..">
+                                        @error('fname')
+                                            <strong class="text-danger">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12">
+                                        <label for="name">last Name</label>
+                                        <input type="text" id="name" name="lname" placeholder="Your name here..">
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-12">
                                         <label>Email</label>
                                         <input type="text" id="email" name="email" placeholder="Your email here..">
+                                        @error('email')
+                                        <strong class="text-danger">{{ $message }}</strong>
+                                    @enderror
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-12">
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input class="pwd2" type="password" placeholder="Your password here.." value="sfsg" name="pass">
+                                            <input class="pwd2" type="password" placeholder="Your password here.." value="sfsg" name="password">
                                             <span class="input-group-btn">
                                                 <button class="btn btn-default reveal3" type="button"><i class="ti-eye"></i></button>
                                             </span>
+                                            @error('password')
+                                            <strong class="text-danger">{{ $message }}</strong>
+                                        @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-12">
                                         <div class="form-group">
                                             <label>Confirm Password</label>
-                                            <input class="pwd3" type="password" placeholder="Your password here.." value="ssres" name="pass">
+                                            <input class="pwd3" type="password" placeholder="Your password here.." value="ssres" name="password_confirmation">
                                             <span class="input-group-btn">
                                                 <button class="btn btn-default reveal2" type="button"><i class="ti-eye"></i></button>
                                             </span>
+                                            @error('password_confirmation')
+                                            <strong class="text-danger">{{ $message }}</strong>
+                                        @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-12">
