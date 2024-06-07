@@ -61,7 +61,7 @@
                             <div class="product-filter-item color">
                                 <div class="color-name">
                                     <span>Color :</span>
-                                    <ul>
+                                    <ul class="color_avl">
                                         @foreach ($availble_colors as $color)
                                             @if ($color->rel_to_color->color_name == 'NA')
                                                 <li class=""><input class="color_id" checked
@@ -84,11 +84,11 @@
                             <div class="product-filter-item color filter-size">
                                 <div class="color-name">
                                     <span>Sizes:</span>
-                                    <ul>
+                                    <ul class="size_avl">
                                         @foreach ($availble_size as $size)
                                             <li class="">
-                                                <input id="{{ $size->size_id }}" type="radio" name="size_id"
-                                                    value="{{ $size->size_id }}">
+                                                <input class="size_id" id="{{ $size->size_id }}" type="radio"
+                                                    name="size_id" value="{{ $size->size_id }}">
                                                 <label
                                                     for="{{ $size->size_id }}">{{ $size->rel_to_size->size_name }}</label>
                                             </li>
@@ -107,6 +107,7 @@
                                 <li><span>SKU:</span>FTE569P</li>
                                 <li><span>Categories:</span>Best Seller, sale</li>
                                 <li><span>Tags:</span>Fashion, Coat, Pink</li>
+                                <li class="stock"></li>
                             </ul>
                         </div>
                     </div>
@@ -125,8 +126,9 @@
                             (3)</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="Information-tab" data-bs-toggle="pill" data-bs-target="#Information"
-                            type="button" role="tab" aria-controls="Information" aria-selected="false">Additional
+                        <button class="nav-link" id="Information-tab" data-bs-toggle="pill"
+                            data-bs-target="#Information" type="button" role="tab" aria-controls="Information"
+                            aria-selected="false">Additional
                             info</button>
                     </li>
                 </ul>
@@ -363,14 +365,41 @@
                 }
             });
 
-        $.ajax({
-            url:'/getSize',
-            type:'POST',
-            data:{'color_id':color_id,'product_id':product_id},
-            success:function(data){
-                alert(data);
-            }
+            $.ajax({
+                url: '/getSize',
+                type: 'POST',
+                data: {
+                    'color_id': color_id,
+                    'product_id': product_id
+                },
+                success: function(data) {
+                    $('.size_avl').html(data);
+
+                    //getQuantity
+                    $('.size_id').click(function() {
+                        var size_id = $(this).val();
+
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                    'content')
+                            }
+                        });
+                        $.ajax({
+                            url:'/getQuantity',
+                            type:'POST',
+                            data: {
+                                'product_id':product_id,
+                                'color_id':color_id,
+                                'size_id':size_id
+                            },
+                            success:function(data){
+                               $('.stock').html(data);
+                            }
+                        });
+                    });
+                }
+            });
         });
-    });
     </script>
 @endsection
