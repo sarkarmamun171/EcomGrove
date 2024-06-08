@@ -47,7 +47,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form class="wpo-accountWrapper" action="#">
+                        <form class="wpo-accountWrapper" action="{{ route('customer.confirmation.login') }}" method="POST">
+                            @csrf
                             <div class="wpo-accountInfo">
                                 <div class="wpo-accountInfoHeader">
                                     <a href="index.html"><img src="{{ asset('frontend') }}/images/logo-2.svg" alt=""></a>
@@ -65,6 +66,9 @@
                                 </div>
                             </div>
                             <div class="wpo-accountForm form-style">
+                                @if (session('exists'))
+                                    <div class="alert alert-danger">{{ session('exists') }}</div>
+                                @endif
                                 <div class="fromTitle">
                                     <h2>Login</h2>
                                     <p>Sign into your pages account</p>
@@ -78,11 +82,14 @@
                                         <div class="form-group">
                                             <label>Password</label>
                                             <input class="pwd6" type="password" placeholder="" value="123456"
-                                                name="pass">
+                                                name="password">
                                             <span class="input-group-btn">
                                                 <button class="btn btn-default reveal6" type="button"><i
                                                         class="ti-eye"></i></button>
                                             </span>
+                                            @if (session('pass'))
+                                                <div class="alert alert-danger">{{ session('pass') }}</div>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-12">

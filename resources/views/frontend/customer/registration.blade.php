@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -50,7 +50,8 @@
                             @csrf
                             <div class="wpo-accountInfo">
                                 <div class="wpo-accountInfoHeader">
-                                    <a href="index.html"><img src="{{ asset('frontend') }}/images/logo-2.svg" alt=""></a>
+                                    <a href="index.html"><img src="{{ asset('frontend') }}/images/logo-2.svg"
+                                            alt=""></a>
                                     <a class="wpo-accountBtn" href="{{ route('customer.login') }}">
                                         <span class="">Log in</span>
                                     </a>
@@ -65,54 +66,60 @@
                                 </div>
                             </div>
                             <div class="wpo-accountForm form-style">
+                                @if (session('success'))
+                                    <div class="alert alert-info">{{ session('success') }}</div>
+                                @endif
                                 <div class="fromTitle">
                                     <h2>Signup</h2>
                                     <p>Sign into your pages account</p>
                                 </div>
-                                @if (session('success'))
-                                    <div class="alert alert-info">{{ session('success') }}</div>
-                                @endif
+
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-12">
-                                        <label for="name">First Name</label>
-                                        <input type="text" id="name" name="fname" placeholder="Your name here..">
+                                        <label for="">First Name</label>
+                                        <input type="text" name="fname" placeholder="Your name here..">
                                         @error('fname')
                                             <strong class="text-danger">{{ $message }}</strong>
                                         @enderror
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12">
-                                        <label for="name">last Name</label>
-                                        <input type="text" id="name" name="lname" placeholder="Your name here..">
+                                        <label for="">last Name</label>
+                                        <input type="text" name="lname" placeholder="Your name here..">
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-12">
                                         <label>Email</label>
-                                        <input type="text" id="email" name="email" placeholder="Your email here..">
+                                        <input type="text" id="email" name="email"
+                                            placeholder="Your email here..">
                                         @error('email')
-                                        <strong class="text-danger">{{ $message }}</strong>
-                                    @enderror
+                                            <strong class="text-danger">{{ $message }}</strong>
+                                        @enderror
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-12">
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input class="pwd2" type="password" placeholder="Your password here.." value="sfsg" name="password">
+                                            <input class="pwd2" type="password" placeholder="Your password here.."
+                                                value="sfsg" name="password">
                                             <span class="input-group-btn">
-                                                <button class="btn btn-default reveal3" type="button"><i class="ti-eye"></i></button>
+                                                <button class="btn btn-default reveal3" type="button"><i
+                                                        class="ti-eye"></i></button>
                                             </span>
                                             @error('password')
-                                            <strong class="text-danger">{{ $message }}</strong>
-                                        @enderror
+                                                <strong class="text-danger">{{ $message }}</strong>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-12">
                                         <div class="form-group">
                                             <label>Confirm Password</label>
-                                            <input class="pwd3" type="password" placeholder="Your password here.." value="ssres" name="password_confirmation">
+                                            <input class="pwd3" type="password" placeholder="Your password here.."
+                                                value="ssres" name="password_confirmation">
                                             <span class="input-group-btn">
-                                                <button class="btn btn-default reveal2" type="button"><i class="ti-eye"></i></button>
+                                                <button class="btn btn-default reveal2" type="button"><i
+                                                        class="ti-eye"></i></button>
                                             </span>
                                             @error('password_confirmation')
-                                            <strong class="text-danger">{{ $message }}</strong>
-                                        @enderror
+                                                <strong class="text-danger">{{ $message }}</strong>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-12">
@@ -120,7 +127,7 @@
                                     </div>
                                 </div>
 
-                                <p class="subText">Sign into your pages account <a href="login.html">Login</a></p>
+                                <p class="subText">Sign into your pages account <a href="{{ route('customer.login') }}">Login</a></p>
                             </div>
                         </form>
                     </div>
@@ -146,4 +153,5 @@
 
 
 <!-- Mirrored from wpocean.com/html/tf/themart/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Jun 2023 08:56:41 GMT -->
+
 </html>

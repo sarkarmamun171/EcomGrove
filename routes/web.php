@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // })
-Route::get('/',[FrontendController::class,'index']);
+Route::get('/',[FrontendController::class,'index'])->name('index');
 Route::get('/category/product/{id}',[FrontendController::class,'category_product'])->name('category.product');
 Route::get('/subcategory/product/{id}',[FrontendController::class,'subcategory_product'])->name('subcategory.product');
 Route::get('/product/details/{slug}',[FrontendController::class,'product_details'])->name('product.details');
@@ -106,3 +106,4 @@ Route::post('product/inventory/store/{id}',[InventoryController::class,'inventor
 Route::get('/customer/login',[CustomerAuthController::class,'customer_login'])->name('customer.login');
 Route::get('/customer/register',[CustomerAuthController::class,'customer_register'])->name('customer.register');
 Route::post('/customer/store',[CustomerAuthController::class,'customer_store'])->name('customer.store');
+Route::post('/customer/login/confirm',[CustomerAuthController::class,'customer_confirmation_login'])->name('customer.confirmation.login');
