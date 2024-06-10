@@ -3,6 +3,7 @@
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerAuthController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventoryController;
@@ -107,4 +108,4 @@ Route::get('/customer/login',[CustomerAuthController::class,'customer_login'])->
 Route::get('/customer/register',[CustomerAuthController::class,'customer_register'])->name('customer.register');
 Route::post('/customer/store',[CustomerAuthController::class,'customer_store'])->name('customer.store');
 Route::post('/customer/login/confirm',[CustomerAuthController::class,'customer_confirmation_login'])->name('customer.confirmation.login');
-Route::get('/customer/profile',[CustomerAuthController::class,'customer_profile'])->name('customer.profile');
+Route::get('/customer/profile',[CustomerController::class,'customer_profile'])->name('customer.profile');
