@@ -123,7 +123,9 @@
                                 <ul>
                                     <li><a href="compare.html"><i class="fi flaticon-right-and-left"></i><span>Compare</span></a>
                                     </li>
-                                    <li><a href="{{ route('customer.login') }}"><i class="fi flaticon-user-profile"></i><span>{{  }}</span></a></li>
+                                    <li>
+                                        <a href="{{ route('customer.login') }}"><i class="fi flaticon-user-profile"></i><span>Mamun</span></a>
+                                    </li>
                                     <li>
                                         <div class="header-wishlist-form-wrapper">
                                             <button class="wishlist-toggle-btn"> <i class="fi flaticon-heart"></i>

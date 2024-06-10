@@ -15,8 +15,5 @@ class Customer extends Authenticatable
 
     protected $guard = 'customer';
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
+
 }
