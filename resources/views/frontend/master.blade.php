@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -94,8 +94,8 @@
                     <div class="row align-items-center">
                         <div class="col-lg-2">
                             <div class="navbar-header">
-                                <a class="navbar-brand" href="index.html"><img src="{{ asset('frontend') }}/images/logo.svg"
-                                        alt="logo"></a>
+                                <a class="navbar-brand" href="index.html"><img
+                                        src="{{ asset('frontend') }}/images/logo.svg" alt="logo"></a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-12">
@@ -104,7 +104,8 @@
                                     <select name="service" class="form-control">
                                         <option disabled="disabled" selected="">All Category</option>
                                         @foreach (App\Models\Category::all() as $category)
-                                        <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                                            <option value="{{ $category->id }}">{{ $category->category_name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -121,11 +122,16 @@
                         <div class="col-lg-4 col-12">
                             <div class="middle-right">
                                 <ul>
-                                    <li><a href="compare.html"><i class="fi flaticon-right-and-left"></i><span>Compare</span></a>
+                                    <li><a href="compare.html"><i
+                                                class="fi flaticon-right-and-left"></i><span>Compare</span></a>
                                     </li>
-                                    <li>
-                                        <a href="{{ route('customer.login') }}"><i class="fi flaticon-user-profile"></i><span>Mamun</span></a>
-                                    </li>
+                                    @auth('customer')
+                                        <a href="{{ route('customer.profile') }}"><i
+                                                class="fi flaticon-user-profile"></i><span>{{ Auth::guard('customer')->user()->fname }}</span></a>
+                                    @else
+                                        <a href="{{ route('customer.login') }}"><i
+                                                class="fi flaticon-user-profile"></i><span>Login</span></a>
+                                    @endauth
                                     <li>
                                         <div class="header-wishlist-form-wrapper">
                                             <button class="wishlist-toggle-btn"> <i class="fi flaticon-heart"></i>
@@ -135,7 +141,9 @@
                                                 <div class="mini-cart-items">
                                                     <div class="mini-cart-item clearfix">
                                                         <div class="mini-cart-item-image">
-                                                            <a href="product.html"><img src="{{ asset('frontend') }}/images/cart/img-1.jpg" alt></a>
+                                                            <a href="product.html"><img
+                                                                    src="{{ asset('frontend') }}/images/cart/img-1.jpg"
+                                                                    alt></a>
                                                         </div>
                                                         <div class="mini-cart-item-des">
                                                             <a href="product.html">Stylish Pink Coat</a>
@@ -173,7 +181,8 @@
                                                 </div>
                                                 <div class="mini-cart-action clearfix">
                                                     <div class="mini-btn">
-                                                        <a href="wishlist.html" class="view-cart-btn">View Wishlist</a>
+                                                        <a href="wishlist.html" class="view-cart-btn">View
+                                                            Wishlist</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -188,7 +197,9 @@
                                                 <div class="mini-cart-items">
                                                     <div class="mini-cart-item clearfix">
                                                         <div class="mini-cart-item-image">
-                                                            <a href="product.html"><img src="{{ asset('frontend') }}/images/cart/img-1.jpg" alt></a>
+                                                            <a href="product.html"><img
+                                                                    src="{{ asset('frontend') }}/images/cart/img-1.jpg"
+                                                                    alt></a>
                                                         </div>
                                                         <div class="mini-cart-item-des">
                                                             <a href="product.html">Stylish Pink Coat</a>
@@ -244,8 +255,8 @@
                             </div>
                             <div class="col-lg-1 col-md-6 col-sm-5 col-6 d-block d-lg-none">
                                 <div class="navbar-header">
-                                    <a class="navbar-brand" href="index.html"><img src="{{ asset('frontend') }}/images/logo.svg"
-                                            alt="logo"></a>
+                                    <a class="navbar-brand" href="index.html"><img
+                                            src="{{ asset('frontend') }}/images/logo.svg" alt="logo"></a>
                                 </div>
                             </div>
                             <div class="col-lg-2 col-md-3 col-sm-4 col-3">
@@ -254,14 +265,17 @@
                                     <div class="mini-shop-item">
                                         <ul id="metis-menu">
                                             @foreach (App\Models\Category::all() as $category)
-                                            <li class="header-catagory-item">
-                                                <a class="menu-down-{{ App\Models\Subcategory::where('category_id',$category->id)->count() ==0 ?'':'arrow' }}" href="#">{{ $category->category_name }}</a>
-                                                <ul class="header-catagory-single">
-                                                        @foreach (App\Models\Subcategory::where('category_id',$category->id)->get() as $subcategory)
-                                                    <li><a href="{{ route('subcategory.product',$subcategory->id) }}">{{ $subcategory->subcategory_name }}</a></li>
-                                                    @endforeach
-                                                </ul>
-                                            </li>
+                                                <li class="header-catagory-item">
+                                                    <a class="menu-down-{{ App\Models\Subcategory::where('category_id', $category->id)->count() == 0 ? '' : 'arrow' }}"
+                                                        href="#">{{ $category->category_name }}</a>
+                                                    <ul class="header-catagory-single">
+                                                        @foreach (App\Models\Subcategory::where('category_id', $category->id)->get() as $subcategory)
+                                                            <li><a
+                                                                    href="{{ route('subcategory.product', $subcategory->id) }}">{{ $subcategory->subcategory_name }}</a>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </li>
                                             @endforeach
                                         </ul>
                                     </div>
@@ -372,17 +386,23 @@
                                     <h3>Instagram</h3>
                                 </div>
                                 <ul class="d-flex">
-                                    <li><a href="project-single.html"><img src="{{ asset('frontend') }}/images/instragram/1.jpg"
+                                    <li><a href="project-single.html"><img
+                                                src="{{ asset('frontend') }}/images/instragram/1.jpg"
                                                 alt=""></a></li>
-                                    <li><a href="project-single.html"><img src="{{ asset('frontend') }}/images/instragram/2.jpg"
+                                    <li><a href="project-single.html"><img
+                                                src="{{ asset('frontend') }}/images/instragram/2.jpg"
                                                 alt=""></a></li>
-                                    <li><a href="project-single.html"><img src="{{ asset('frontend') }}/images/instragram/4.jpg"
+                                    <li><a href="project-single.html"><img
+                                                src="{{ asset('frontend') }}/images/instragram/4.jpg"
                                                 alt=""></a></li>
-                                    <li><a href="project-single.html"><img src="{{ asset('frontend') }}/images/instragram/3.jpg"
+                                    <li><a href="project-single.html"><img
+                                                src="{{ asset('frontend') }}/images/instragram/3.jpg"
                                                 alt=""></a></li>
-                                    <li><a href="project-single.html"><img src="{{ asset('frontend') }}/images/instragram/4.jpg"
+                                    <li><a href="project-single.html"><img
+                                                src="{{ asset('frontend') }}/images/instragram/4.jpg"
                                                 alt=""></a></li>
-                                    <li><a href="project-single.html"><img src="{{ asset('frontend') }}/images/instragram/1.jpg"
+                                    <li><a href="project-single.html"><img
+                                                src="{{ asset('frontend') }}/images/instragram/1.jpg"
                                                 alt=""></a></li>
                                 </ul>
                             </div>
@@ -448,4 +468,5 @@
     <script src="{{ asset('frontend') }}/js/script.js"></script>
     @yield('footer_script')
 </body>
+
 </html>

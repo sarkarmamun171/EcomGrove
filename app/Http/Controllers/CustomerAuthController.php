@@ -53,4 +53,7 @@ class CustomerAuthController extends Controller
             return back()->with('exists', 'Email or Password Invalid');
         }
     }
+    public function customer_profile(){
+        return view('frontend.customer.profile');
+    }
 }
