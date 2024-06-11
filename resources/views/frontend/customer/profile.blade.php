@@ -41,8 +41,11 @@
                 <div class="card-header">
                     <h3>Update Profile Information</h3>
                 </div>
+                @if (session('success'))
+                    <div class="alert alert-info">{{ session('success') }}</div>
+                @endif
                 <div class="card-body">
-                    <form action="{{ route('customer.profile.update') }}" method="post" enctype="multipart/form-data    ">
+                    <form action="{{ route('customer.profile.update') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-lg-6">
@@ -65,8 +68,20 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-3">
+                                    <label for="" class="form-label">Password</label>
+                                    <input type="password" class="form-control" name="password">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
                                     <label for="" class="form-label">Address</label>
                                     <input type="text" class="form-control" name="address">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Phone</label>
+                                    <input type="number" class="form-control" name="phone">
                                 </div>
                             </div>
                             <div class="col-lg-6">

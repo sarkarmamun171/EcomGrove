@@ -108,6 +108,6 @@ Route::get('/customer/login',[CustomerAuthController::class,'customer_login'])->
 Route::get('/customer/register',[CustomerAuthController::class,'customer_register'])->name('customer.register');
 Route::post('/customer/store',[CustomerAuthController::class,'customer_store'])->name('customer.store');
 Route::post('/customer/login/confirm',[CustomerAuthController::class,'customer_confirmation_login'])->name('customer.confirmation.login');
-Route::get('/customer/profile',[CustomerController::class,'customer_profile'])->name('customer.profile');
+Route::get('/customer/profile',[CustomerController::class,'customer_profile'])->name('customer.profile')->middleware('customer');
 Route::get('/customer/logout',[CustomerController::class,'customer_logout'])->name('customer.logout');
 Route::post('/customer/profile/update',[CustomerController::class,'customer_profile_update'])->name('customer.profile.update');
