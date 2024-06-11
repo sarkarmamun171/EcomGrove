@@ -109,6 +109,7 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <input type="hidden" name="product_id" value="{{ $product_details->id }}">
                                 <div class="search-box">
                                     <div class="input-group">
                                         <input type="search" class="form-control"

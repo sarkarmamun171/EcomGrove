@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerAuthController;
 use App\Http\Controllers\CustomerController;
@@ -111,3 +112,6 @@ Route::post('/customer/login/confirm',[CustomerAuthController::class,'customer_c
 Route::get('/customer/profile',[CustomerController::class,'customer_profile'])->name('customer.profile')->middleware('customer');
 Route::get('/customer/logout',[CustomerController::class,'customer_logout'])->name('customer.logout');
 Route::post('/customer/profile/update',[CustomerController::class,'customer_profile_update'])->name('customer.profile.update');
+
+//cart
+Route::post('/cart/store',[CartController::class,'cart_store'])->name('cart.store');

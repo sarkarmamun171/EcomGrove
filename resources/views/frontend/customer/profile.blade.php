@@ -18,11 +18,11 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-3">
-            <div class="card text-center" style="width: 18rem;">
+            <div class="card text-center pt-3" style="width: 18rem;">
                 @if (Auth::guard('customer')->user()->photo == null)
                 <img src="{{ Avatar::create(Auth::guard('customer')->user()->fname)->toBase64() }}" width="50" class="m-auto"/>
             @else
-                <img src="{{ asset('uploads/customer') }}/{{ Auth::guard('customer')->user()->photo }}" width="50" alt="" />
+                <img src="{{ asset('uploads/customer') }}/{{ Auth::guard('customer')->user()->photo }}" width="50" alt="" class="m-auto" />
             @endif
 
                 <div class="card-body">
@@ -75,25 +75,25 @@
                             <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Address</label>
-                                    <input type="text" class="form-control" name="address">
+                                    <input type="text" class="form-control" name="address" value="{{ Auth::guard('customer')->user()->address }}">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Phone</label>
-                                    <input type="number" class="form-control" name="phone">
+                                    <input type="number" class="form-control" name="phone" value="{{ Auth::guard('customer')->user()->phone }}">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Country</label>
-                                    <input type="text" class="form-control" name="country">
+                                    <input type="text" class="form-control" name="country" value="{{ Auth::guard('customer')->user()->country }}">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Zip</label>
-                                    <input type="text" class="form-control" name="zip">
+                                    <input type="text" class="form-control" name="zip" value="{{ Auth::guard('customer')->user()->zip }}">
                                 </div>
                             </div>
                             <div class="col-lg-12">

@@ -32,23 +32,27 @@ class CustomerController extends Controller
                     'country' => $request->country,
                     'zip' => $request->zip,
                 ]);
-                return back()->with('success','Profile Update Successfully');
+                return back()->with('success', 'Profile Update Successfully');
             } else {
+                if (Auth::guard('customer')->user()->photo !== null) {
+                    $delete_form = public_path('uploads/customer/' . Auth::guard('customer')->user()->photo);
+                    unlink($delete_form);
+                }
                 $image = $request->photo;
                 $extension = $image->extension();
-                $file_name = Auth::guard('customer')->id().'.'.$extension;
+                $file_name = Auth::guard('customer')->id() . '.' . $extension;
                 Image::make($image)->resize(300, 200)->save(public_path('uploads/customer/' . $file_name));
                 Customer::find(Auth::guard('customer')->id())->update([
                     'fname' => $request->fname,
                     'lname' => $request->lname,
                     'email' => $request->email,
                     'phone' => $request->phone,
-                    'address' =>$request->address,
-                    'country' =>$request->country,
+                    'address' => $request->address,
+                    'country' => $request->country,
                     'photo' => $file_name,
                     'updated_at' => Carbon::now(),
                 ]);
-                return back()->with('success','Profile Update Successfully');
+                return back()->with('success', 'Profile Update Successfully');
             }
         } else {
             if ($request->photo == '') {
@@ -62,12 +66,16 @@ class CustomerController extends Controller
                     'country' => $request->country,
                     'zip' => $request->zip,
                 ]);
-                return back()->with('success','Profile Update Successfully');
+                return back()->with('success', 'Profile Update Successfully');
             } else {
+                if (Auth::guard('customer')->user()->photo !== null) {
+                    $delete_form = public_path('uploads/customer/' . Auth::guard('customer')->user()->photo);
+                    unlink($delete_form);
+                }
                 $image = $request->photo;
                 $extension = $image->extension();
-                $file_name = Auth::guard('customer')->id().'.'. $extension;
-                Image::make($image)->resize(300, 200)->save(public_path('uploads/customer/'.$file_name));
+                $file_name = Auth::guard('customer')->id() . '.' . $extension;
+                Image::make($image)->resize(300, 200)->save(public_path('uploads/customer/' . $file_name));
                 Customer::find(Auth::guard('customer')->id())->update([
                     'fname' => $request->fname,
                     'lname' => $request->lname,
@@ -80,7 +88,7 @@ class CustomerController extends Controller
                     'photo' => $file_name,
                     'updated_at' => Carbon::now(),
                 ]);
-                return back()->with('success','Profile Update Successfully');
+                return back()->with('success', 'Profile Update Successfully');
             }
         }
     }
