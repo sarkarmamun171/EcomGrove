@@ -110,6 +110,7 @@
 
                                     <a href="#" class="wl-btn"><i class="fi flaticon-heart"></i></a>
                                 </div>
+                                <input type="hidden" name="product_id" value="{{ $product_details->id }}">
                                 <ul class="important-text">
                                     <li><span>SKU:</span>FTE569P</li>
                                     <li><span>Categories:</span>Best Seller, sale</li>
