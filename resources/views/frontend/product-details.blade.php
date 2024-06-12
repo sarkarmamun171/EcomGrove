@@ -81,6 +81,9 @@
                                                 @endif
                                             @endforeach
                                         </ul>
+                                        @error('color_id')
+                                            <strong class="text-danger">Please Select Your Color</strong>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="product-filter-item color filter-size">
@@ -96,6 +99,9 @@
                                                 </li>
                                             @endforeach
                                         </ul>
+                                        @error('size_id')
+                                            <strong class="text-danger">Please Select Your Size</strong>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="pro-single-btn">

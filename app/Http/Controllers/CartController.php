@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     public function cart_store(Request $request){
-        print_r($request->all());
+        $request->validate([
+            'color_id' =>'required',
+            'size_id'  =>'required',
+        ]);
     }
 }
