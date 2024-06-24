@@ -11,5 +11,6 @@ class CartController extends Controller
             'color_id' =>'required',
             'size_id'  =>'required',
         ]);
+        print_r($request->all());
     }
 }
