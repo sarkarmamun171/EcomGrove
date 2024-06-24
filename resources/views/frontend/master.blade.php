@@ -109,7 +109,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                            
+
                                 <div class="search-box">
                                     <div class="input-group">
                                         <input type="search" class="form-control"
@@ -467,6 +467,7 @@
     <script src="{{ asset('frontend') }}/js/jquery-plugin-collection.js"></script>
     <!-- Custom script for this template -->
     <script src="{{ asset('frontend') }}/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @yield('footer_script')
 </body>
 

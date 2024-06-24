@@ -417,4 +417,15 @@
             });
         });
     </script>
+    @if (session('cart_add'))
+        <script>
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: '{{ session('cart_add') }}',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        </script>
+    @endif
 @endsection
