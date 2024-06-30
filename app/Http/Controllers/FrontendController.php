@@ -67,7 +67,7 @@ class FrontendController extends Controller
         $quanties = Inventory::where('product_id', $request->product_id)->where('color_id', $request->color_id)->where('size_id',$request->size_id)->first()->quantity;
 
         if ($quanties == 0) {
-            $quanties = '<button class="btn btn-danger">Out of stock</button>';
+            $quanties = '<button class="abc btn btn-danger" value="'.$quanties.'">Out of stock</button>';
         }
         else{
             $quanties = '<button class="btn btn-success">'.$quanties.' In stock</button>';

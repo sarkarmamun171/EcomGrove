@@ -196,32 +196,19 @@
                                             <div class="mini-cart-content">
                                                 <button class="mini-cart-close"><i class="ti-close"></i></button>
                                                 <div class="mini-cart-items">
-                                                    <div class="mini-cart-item clearfix">
-                                                        <div class="mini-cart-item-image">
-                                                            <a href="product.html"><img
-                                                                    src="{{ asset('frontend') }}/images/cart/img-1.jpg"
-                                                                    alt></a>
+                                                    @foreach (App\Models\Cart::where('customer_id', Auth::guard('customer')->id())->get() as $cart)
+                                                        <div class="mini-cart-item clearfix">
+                                                            <div class="mini-cart-item-image">
+                                                                <a href="product.html"><img src="{{ asset('uploads/product/previewImage') }}/{{ $cart->rel_to_product->preview_image }}" alt></a>
+                                                            </div>
+                                                            <div class="mini-cart-item-des">
+                                                                <a href="product.html">{{ $cart->rel_to_product->product_name }}</a>
+                                                                <span class="mini-cart-item-price">$150 x 1</span>
+                                                                <span class="mini-cart-item-quantity"><a href="#"><i
+                                                                            class="ti-close"></i></a></span>
+                                                            </div>
                                                         </div>
-                                                        <div class="mini-cart-item-des">
-                                                            <a href="product.html">Stylish Pink Coat</a>
-                                                            <span class="mini-cart-item-price">$150 x 1</span>
-                                                            <span class="mini-cart-item-quantity"><a href="#"><i
-                                                                        class="ti-close"></i></a></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="mini-cart-item clearfix">
-                                                        <div class="mini-cart-item-image">
-                                                            <a href="product.html"><img
-                                                                    src="{{ asset('frontend') }}/images/cart/img-2.jpg"
-                                                                    alt></a>
-                                                        </div>
-                                                        <div class="mini-cart-item-des">
-                                                            <a href="product.html">Blue Bag</a>
-                                                            <span class="mini-cart-item-price">$120 x 2</span>
-                                                            <span class="mini-cart-item-quantity"><a href="#"><i
-                                                                        class="ti-close"></i></a></span>
-                                                        </div>
-                                                    </div>
+                                                        @endforeach
                                                 </div>
                                                 <div class="mini-cart-action clearfix">
                                                     <span class="mini-checkout-price">Subtotal:
@@ -424,41 +411,10 @@
             </div>
         </footer>
         <!-- end of wpo-site-footer-section -->
-
-        <!-- start wpo-newsletter-popup-area-section -->
-        {{-- <section class="wpo-newsletter-popup-area-section">
-            <div class="wpo-newsletter-popup-area">
-                <div class="wpo-newsletter-popup-ineer">
-                    <button class="btn newsletter-close-btn"><i class="ti-close"></i></button>
-                    <div class="img-holder">
-                        <img src="{{ asset('frontend') }}/images/newsletter.jpg" alt>
-                    </div>
-                    <div class="details">
-                        <h4>Get 30% discount shipped to your inbox</h4>
-                        <p>Subscribe to the Themart eCommerce newsletter to receive timely updates to your favorite products</p>
-                        <form>
-                            <div>
-                                <input type="email" placeholder="Enter your email">
-                                <button type="submit">Subscribe</button>
-                            </div>
-                            <div>
-                                <label class="checkbox-holder"> Don't show this popup again!
-                                    <input type="checkbox" class="show-message">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section> --}}
-        <!-- end wpo-newsletter-popup-area-section -->
-
     </div>
     <!-- end of page-wrapper -->
 
-    <!-- All JavaScript files
-    ================================================== -->
+    <!-- All JavaScript files -->
     <script src="{{ asset('frontend') }}/js/jquery.min.js"></script>
     <script src="{{ asset('frontend') }}/js/bootstrap.bundle.min.js"></script>
     <!-- Plugins for this template -->
@@ -468,6 +424,7 @@
     <!-- Custom script for this template -->
     <script src="{{ asset('frontend') }}/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     @yield('footer_script')
 </body>
 
