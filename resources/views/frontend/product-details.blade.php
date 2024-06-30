@@ -410,14 +410,14 @@
                             },
                             success: function(data) {
                                 $('.stock').html(data);
-                                // var q = $('.abc').val();
-                                // alert(q);
-                                // if (q==0) {
-                                //     $('.card_add').attr('disabled','');
-                                // }
-                                // else{
-                                //     $('.card_add').removeAttr('disabled','');
-                                // }
+                                 var q = $('.abc').val();
+                                 alert(q);
+                                 if (q==0) {
+                                     $('.card_add').attr('disabled','');
+                                 }
+                                 else{
+                                     $('.card_add').removeAttr('disabled','');
+                                 }
                             }
                         })
                     });
@@ -425,7 +425,7 @@
             });
         })
     </script>
-    {{-- @if (session('cart_add'))
+    @if (session('cart_add'))
         <script>
             Swal.fire({
                 position: "top-end",
@@ -435,5 +435,5 @@
                 timer: 1500
             });
         </script>
-    @endif --}}
+    @endif
 @endsection

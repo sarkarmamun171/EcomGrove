@@ -192,27 +192,45 @@
                                     <li>
                                         <div class="mini-cart">
                                             <button class="cart-toggle-btn"> <i class="fi flaticon-add-to-cart"></i>
-                                                <span class="cart-count">2</span></button>
+                                                <span class="cart-count">{{ App\Models\Cart::where('customer_id', Auth::guard('customer')->id())->count() }}</span></button>
                                             <div class="mini-cart-content">
                                                 <button class="mini-cart-close"><i class="ti-close"></i></button>
                                                 <div class="mini-cart-items">
+                                                    @php
+                                                        $sum = 0;
+                                                    @endphp
                                                     @foreach (App\Models\Cart::where('customer_id', Auth::guard('customer')->id())->get() as $cart)
                                                         <div class="mini-cart-item clearfix">
                                                             <div class="mini-cart-item-image">
                                                                 <a href="product.html"><img src="{{ asset('uploads/product/previewImage') }}/{{ $cart->rel_to_product->preview_image }}" alt></a>
                                                             </div>
-                                                            <div class="mini-cart-item-des">
-                                                                <a href="product.html">{{ $cart->rel_to_product->product_name }}</a>
-                                                                <span class="mini-cart-item-price">$150 x 1</span>
-                                                                <span class="mini-cart-item-quantity"><a href="#"><i
+                                                            <div class="mini-cart-item-des" title="{{ $cart->rel_to_product->product_name }}">
+                                                                <a href="product.html">{{ Str::substr($cart->rel_to_product->product_name, 0, 20).'...' }}</a>
+                                                                <div class="d-flex">
+                                                                    <span class="mini-cart-item-price">
+                                                                        Color:{{ $cart->rel_to_color->color_name }}
+                                                                    </span>&nbsp;&nbsp;
+                                                                    <span class="mini-cart-item-price">
+                                                                        Size:{{ $cart->rel_to_size->size_name }}
+                                                                    </span>
+                                                                </div>
+                                                                <span class="mini-cart-item-price">{{ $cart->rel_to_product->after_discount }} x {{ $cart->quantity }}</span>
+
+                                                                <span class="mini-cart-item-quantity">
+                                                                    <a href="{{ route('cart.remove',$cart->id) }}"><i
                                                                             class="ti-close"></i></a></span>
                                                             </div>
                                                         </div>
+                                                        @php
+                                                            $sum +=$cart->rel_to_product->after_discount*$cart->quantity;
+                                                        @endphp
                                                         @endforeach
                                                 </div>
                                                 <div class="mini-cart-action clearfix">
                                                     <span class="mini-checkout-price">Subtotal:
-                                                        <span>$390</span></span>
+                                                        <span>
+                                                            &#2547; {{ $sum}}
+                                                        </span></span>
                                                     <div class="mini-btn">
                                                         <a href="cart.html" class="view-cart-btn">View Cart</a>
                                                     </div>

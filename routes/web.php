@@ -115,3 +115,4 @@ Route::post('/customer/profile/update',[CustomerController::class,'customer_prof
 
 //cart
 Route::post('/cart/store',[CartController::class,'cart_store'])->name('cart.store');
+Route::get('/cart/remove/{id}',[CartController::class,'cart_remove'])->name('cart.remove');
