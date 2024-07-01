@@ -232,7 +232,7 @@
                                                             &#2547; {{ $sum}}
                                                         </span></span>
                                                     <div class="mini-btn">
-                                                        <a href="cart.html" class="view-cart-btn">View Cart</a>
+                                                        <a href="{{ route('cart') }}" class="view-cart-btn">View Cart</a>
                                                     </div>
                                                 </div>
                                             </div>

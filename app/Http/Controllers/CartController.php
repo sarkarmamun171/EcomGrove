@@ -34,6 +34,13 @@ class CartController extends Controller
     }
     public function cart_remove($id){
         Cart::find($id)->delete();
-        return back(); 
+        return back();
+    }
+    public function cart(){
+        $carts = Cart::where('customer_id',Auth::guard('customer')->id())->get();
+        return view('frontend.cart',[
+            'carts'=>$carts,
+        ]);
+
     }
 }
