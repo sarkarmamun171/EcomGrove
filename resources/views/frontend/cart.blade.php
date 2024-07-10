@@ -56,15 +56,15 @@
                                                         </ul>
                                                     </div>
                                                 </td>
-                                                <td class="ptice">&#2547;{{ $cart->rel_to_product->after_discount }}</td>
-                                                <td class="td-quantity">
+                                                <td class="ptice cartabc">&#2547;{{ $cart->rel_to_product->after_discount }}</td>
+                                                <td class="td-quantity cartabc">
                                                     <div class="quantity cart-plus-minus">
-                                                        <input class="text-value" type="text" value="{{ $cart->quantity }}">
-                                                        <div class="dec qtybutton">-</div>
-                                                        <div class="inc qtybutton">+</div>
+                                                        <input class="text-value quan" type="text" value="{{ $cart->quantity }}">
+                                                         <div class="dec qtybutton">-</div>
+                                                        <div data-price="{{ $cart->rel_to_product->after_discount }}" class="inc qtybutton">+</div>
                                                     </div>
                                                 </td>
-                                                <td class="ptice">&#2547;{{ $cart->rel_to_product->after_discount*$cart->quantity }}</td>
+                                                <td class="ptice cartabc">&#2547;{{ $cart->rel_to_product->after_discount*$cart->quantity }}</td>
                                                 <td class="action">
                                                     <ul>
                                                         <li class="w-btn"><a data-bs-toggle="tooltip"
@@ -225,4 +225,28 @@
         </div>
         <!-- cart-area end -->
 
+@endsection
+@section('footer_script')
+<script>
+    var td = document.getElementsByClassName('cartabc');
+    var array = Array.from(td);
+    array.map((item) => {
+        item.addEventListener('click', function (e) {
+            if (e.target.className == 'inc qtybutton') {
+                var price = e.target.dataset.price;
+                var quantity = e.target.parentElement.firstElementChild.value;
+                var sub = price * quantity;
+                item.nextElementSibling.firstElementChild.innerHTML = sub;
+
+            }
+            if (e.target.className == 'dec qtybutton') {
+                var price = e.target.dataset.price;
+                var quantity = e.target.parentElement.firstElementChild.value;
+                var sub = price * quantity;
+                item.nextElementSibling.firstElementChild.innerHTML = sub;
+
+            }
+        });
+    });
+</script>
 @endsection
