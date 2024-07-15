@@ -43,4 +43,7 @@ class CartController extends Controller
         ]);
 
     }
+    public function cart_update(Request $request){
+        print_r($request->all());
+    }
 }

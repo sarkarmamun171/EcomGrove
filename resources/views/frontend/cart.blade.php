@@ -13,7 +13,8 @@
                 <div class="cart-wrapper">
                     <div class="row">
                         <div class="col-lg-8 col-12">
-                            <form action="#">
+                            <form action="{{ route('cart.update') }}" method="POST">
+                                @csrf
                                 <div class="cart-item">
                                     <table class="table-responsive cart-wrap">
                                         <thead>
@@ -58,13 +59,13 @@
                                                 </td>
                                                 <td class="ptice cartabc">&#2547;{{ $cart->rel_to_product->after_discount }}</td>
                                                 <td class="td-quantity cartabc">
-                                                    <div class="quantity cart-plus-minus">
-                                                        <input class="text-value quan" type="text" value="{{ $cart->quantity }}">
-                                                         <div class="dec qtybutton">-</div>
+                                                    <div class="quantity">
+                                                        <input class="text-value quan" type="text" name="quantity[]" value="{{ $cart->quantity }}">
+                                                         <div data-price="{{ $cart->rel_to_product->after_discount }}" class="dec qtybutton">-</div>
                                                         <div data-price="{{ $cart->rel_to_product->after_discount }}" class="inc qtybutton">+</div>
                                                     </div>
                                                 </td>
-                                                <td class="ptice cartabc">&#2547;{{ $cart->rel_to_product->after_discount*$cart->quantity }}</td>
+                                                <td class="ptice cartabc">&#2547;<span>{{ $cart->rel_to_product->after_discount*$cart->quantity }}</span></td>
                                                 <td class="action">
                                                     <ul>
                                                         <li class="w-btn"><a data-bs-toggle="tooltip"
@@ -84,15 +85,15 @@
                                     </table>
                                 </div>
                                 <div class="cart-action">
-                                    <div class="apply-area">
-                                        <input type="text" class="form-control" placeholder="Enter your coupon">
-                                        <button class="theme-btn-s2" type="submit">Apply</button>
-                                    </div>
-                                    <a class="theme-btn-s2" href="#"><i class="fi flaticon-refresh"></i> Update Cart</a>
+                                    <button class="theme-btn-s2" type="submit"><i class="fi flaticon-refresh"></i> Update Cart</button>
                                 </div>
                             </form>
                         </div>
                         <div class="col-lg-4 col-12">
+                            <div class="apply-area mb-2">
+                                <input type="text" class="form-control" placeholder="Enter your coupon">
+                                <button class="theme-btn-s2" type="submit">Apply</button>
+                            </div>
                             <div class="cart-total-wrap">
                                 <h3>Cart Totals</h3>
                                 <div class="sub-total">
