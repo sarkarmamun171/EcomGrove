@@ -1088,14 +1088,10 @@
                             <li><a href="{{ route('inventory') }}">Product Variation</a></li>
                         </ul>
                     </li>
-                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <li><a class="#" href="{{ route('coupon') }}">
                             <i class="flaticon-381-network"></i>
-                            <span class="nav-text">Table</span>
+                            <span class="nav-text">Coupon</span>
                         </a>
-                        <ul aria-expanded="false">
-                            <li><a href="table-bootstrap-basic.html">Bootstrap</a></li>
-                            <li><a href="table-datatable-basic.html">Datatable</a></li>
-                        </ul>
                     </li>
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-381-layer-1"></i>

@@ -60,7 +60,7 @@
                                                 <td class="ptice cartabc">&#2547;{{ $cart->rel_to_product->after_discount }}</td>
                                                 <td class="td-quantity cartabc">
                                                     <div class="quantity">
-                                                        <input class="text-value quan" type="text" name="quantity[]" value="{{ $cart->quantity }}">
+                                                        <input class="text-value quan" type="text" name="quantity[{{ $cart->id }}]" value="{{ $cart->quantity }}">
                                                          <div data-price="{{ $cart->rel_to_product->after_discount }}" class="dec qtybutton">-</div>
                                                         <div data-price="{{ $cart->rel_to_product->after_discount }}" class="inc qtybutton">+</div>
                                                     </div>

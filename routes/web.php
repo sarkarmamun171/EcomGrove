@@ -3,6 +3,7 @@
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\CustomerAuthController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\FrontendController;
@@ -118,3 +119,6 @@ Route::post('/cart/store',[CartController::class,'cart_store'])->name('cart.stor
 Route::get('/cart/remove/{id}',[CartController::class,'cart_remove'])->name('cart.remove');
 Route::get('/cart',[CartController::class,'cart'])->name('cart');
 Route::post('/cart/update',[CartController::class,'cart_update'])->name('cart.update');
+
+//Coupon
+Route::get('/coupon',[CouponController::class,'index'])->name('coupon');

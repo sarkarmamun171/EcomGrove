@@ -44,6 +44,11 @@ class CartController extends Controller
 
     }
     public function cart_update(Request $request){
-        print_r($request->all());
+        foreach ($request->quantity as $cart_id => $quantity) {
+            Cart::find($cart_id)->update([
+                'quantity' =>$quantity,
+            ]);
+        }
+        return back();
     }
 }
