@@ -122,3 +122,4 @@ Route::post('/cart/update',[CartController::class,'cart_update'])->name('cart.up
 
 //Coupon
 Route::get('/coupon',[CouponController::class,'index'])->name('coupon');
+Route::post('/coupon/store',[CouponController::class,'coupon_store'])->name('coupon.store');
