@@ -25,7 +25,7 @@
                     @foreach ($products as $sl => $product)
                         <tr>
                             <td>{{ $products->firstitem() + $sl }}</td>
-                            <td><input type="checkbox"  data-toggle="toggle" data-size="sm" class="check"  data-id="{{ $product->id }}"{{ $product->status==1?'checked':'' }}></td>
+                            <td><input type="checkbox"  data-toggle="toggle" data-size="sm" value="{{ $product->status }}" class="check"  data-id="{{ $product->id }}"{{ $product->status==1?'checked':''}} ></td>
                             <td>{{ $product->rel_to_category->category_name }}</td>
                             <td>{{ $product->rel_to_subcategory->subcategory_name }}</td>
                             {{-- <td>{{ $product->rel_to_brand->brand_name }}</td> --}}

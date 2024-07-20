@@ -90,10 +90,15 @@
                             </form>
                         </div>
                         <div class="col-lg-4 col-12">
-                            <div class="apply-area mb-2">
-                                <input type="text" class="form-control" placeholder="Enter your coupon">
-                                <button class="theme-btn-s2" type="submit">Apply</button>
-                            </div>
+                            @if ($mgs)
+                                <div class="alert alert-danger">{{ $mgs }}</div>
+                            @endif
+                            <form action="{{ route('cart') }}" method="GET">
+                                <div class="apply-area mb-2">
+                                    <input type="text" class="form-control" name="coupon" placeholder="Enter your coupon">
+                                    <button class="theme-btn-s2" type="submit">Apply</button>
+                                </div>
+                            </form>
                             <div class="cart-total-wrap">
                                 <h3>Cart Totals</h3>
                                 <div class="sub-total">
@@ -102,7 +107,7 @@
                                 </div>
                                 <div class="sub-total my-3">
                                     <h4>Discount</h4>
-                                    <span>00.00</span>
+                                    <span>{{ $discount }}</span>
                                 </div>
                                 <div class="total mb-3">
                                     <h4>Total</h4>

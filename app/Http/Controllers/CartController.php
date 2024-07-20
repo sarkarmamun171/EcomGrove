@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Coupon;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,12 +37,27 @@ class CartController extends Controller
         Cart::find($id)->delete();
         return back();
     }
-    public function cart(){
+    public function cart(Request $request){
+        $coupon = $request->coupon;
+        $mgs ='';
+        $type = '';
+        $discount = '';
+        if (isset($coupon)) {
+            if (Coupon::where('coupon_name',$coupon)->exists()) {
+                echo 'ace';
+            }
+            else{
+                $mgs = "Invalid Coupon Code";
+                $discount= 0;
+            }
+        }
+
         $carts = Cart::where('customer_id',Auth::guard('customer')->id())->get();
         return view('frontend.cart',[
             'carts'=>$carts,
+            'mgs'=>$mgs,
+            'discount'=>$discount,
         ]);
-
     }
     public function cart_update(Request $request){
         foreach ($request->quantity as $cart_id => $quantity) {

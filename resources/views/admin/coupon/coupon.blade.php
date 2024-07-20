@@ -12,9 +12,9 @@
                     <th>Name</th>
                     <th>Type</th>
                     <th>Amount</th>
-                    <th>Limit</th>
                     <th>Validity</th>
-                    <th>Status</th>
+                    <th>Limit</th>
+                    {{-- <th>Status</th> --}}
                     <th>Action</th>
                 </tr>
                 @foreach ($coupons as $sl=>$coupon)
@@ -31,6 +31,10 @@
                             @endif
                     </td>
                         <td>{{ $coupon->coupon_limit }}</td>
+                        <td>
+                            <a title="Delete" href="{{ route('coupon.delete', $coupon->id) }}"
+                                class="btn btn-danger shadow btn-xs sharp "><i class="fa fa-trash"></i></a>
+                        </td>
                     </tr>
                 @endforeach
             </table>

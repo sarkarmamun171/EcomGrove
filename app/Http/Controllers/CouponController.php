@@ -25,4 +25,8 @@ class CouponController extends Controller
     ]);
     return back();
    }
+   public function coupon_delete($id){
+    Coupon::find($id)->delete();
+    return back();
+   }
 }
