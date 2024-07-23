@@ -41,14 +41,27 @@ class CartController extends Controller
         $coupon = $request->coupon;
         $mgs ='';
         $type = '';
-        $discount = '';
+        $discount = 0;
         if (isset($coupon)) {
             if (Coupon::where('coupon_name',$coupon)->exists()) {
-                echo 'ace';
+                if (Carbon::now()->format('Y-m-d')<=Coupon::where('coupon_name',$coupon)->first()->coupon_validity) {
+                    if (Coupon::where('coupon_name',$coupon)->first()->limit !==0) {
+                        $type = Coupon::where('coupon_name',$coupon)->first()->coupon_type;
+                        $discount = Coupon::where('coupon_name',$coupon)->first()->coupon_amount;
+                    }
+                    else{
+                        $mgs = "Coupon Code limit Exceed !";
+                        $discount= 0;
+                    }
+                }else{
+
+                    $mgs = "Coupon Code Expired !";
+                    $discount= 0;
+                }
             }
             else{
-                $mgs = "Invalid Coupon Code";
-                $discount= 0;
+                    $mgs = "Invalid Coupon Code";
+                    $discount= 0;
             }
         }
 
@@ -57,6 +70,7 @@ class CartController extends Controller
             'carts'=>$carts,
             'mgs'=>$mgs,
             'discount'=>$discount,
+            'type'=>$type,
         ]);
     }
     public function cart_update(Request $request){

@@ -95,10 +95,20 @@
                             @endif
                             <form action="{{ route('cart') }}" method="GET">
                                 <div class="apply-area mb-2">
-                                    <input type="text" class="form-control" name="coupon" placeholder="Enter your coupon">
+                                    <input type="text" class="form-control" name="coupon" value="{{ @$_GET['coupon_name'] }}" placeholder="Enter your coupon">
                                     <button class="theme-btn-s2" type="submit">Apply</button>
                                 </div>
                             </form>
+                            @php
+                                if ($type==1) {
+                                    $discount_final = $sub*$discount/(100);
+                                    $sum_final = round($sub-$discount_final);
+                                }else {
+                                    $discount_final = $discount;
+                                    $sum_final = round($sub-$discount_final);
+                                }
+                            @endphp
+
                             <div class="cart-total-wrap">
                                 <h3>Cart Totals</h3>
                                 <div class="sub-total">
@@ -107,13 +117,20 @@
                                 </div>
                                 <div class="sub-total my-3">
                                     <h4>Discount</h4>
-                                    <span>{{ $discount }}</span>
+                                    <span>&#2547;{{ $discount_final }}</span>
                                 </div>
                                 <div class="total mb-3">
                                     <h4>Total</h4>
-                                    <span>&#2547;{{ $sub }}</span>
+                                    <span>&#2547;{{ $sum_final }}</span>
                                 </div>
-                                <a class="theme-btn-s2" href="checkout.html">Proceed To CheckOut</a>
+                                @php
+                                    session([
+                                        'discount'=>$discount_final,
+                                        'total'=>$sum_final,
+                                        'sub'=>$sub,
+                                    ])
+                                @endphp
+                                <a class="theme-btn-s2" href="{{ route('checkout') }}">Proceed To CheckOut</a>
                             </div>
                         </div>
                     </div>

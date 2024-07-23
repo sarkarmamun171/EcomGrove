@@ -13,7 +13,7 @@
                     <th>Type</th>
                     <th>Amount</th>
                     <th>Validity</th>
-                    <th>Limit</th>
+                    <th>Limit</th> 
                     {{-- <th>Status</th> --}}
                     <th>Action</th>
                 </tr>
