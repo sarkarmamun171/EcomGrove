@@ -20,7 +20,7 @@
                         <td>{{ $inventory->quantity }}</td>
                         <td>
                             <div class="d-flex">
-                                <a title="Delete" href="" class="btn btn-danger shadow btn-xs sharp "><i class="fa fa-trash"></i></a>
+                                <a title="Delete" href="{{ route('inventory.delete',$inventory->id) }}" class="btn btn-danger shadow btn-xs sharp "><i class="fa fa-trash"></i></a>
                             </div>
                         </td>
                     </tr>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\InvoiceMail;
 use App\Models\Billing;
 use App\Models\Cart;
 use App\Models\City;
@@ -13,6 +14,7 @@ use App\Models\Shipping;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 class CheckoutController extends Controller
 {
@@ -111,15 +113,20 @@ class CheckoutController extends Controller
                     'quantity' => $cart->quantity,
                     'created_at' => Carbon::now(),
                 ]);
+
                 Inventory::where('product_id', $cart->product_id)->where('color_id', $cart->color_id)->where('size_id', $cart->size_id)->decrement('quantity', $cart->quantity);
 
                 Cart::find($cart->id)->delete();
             }
-            return back();
+            Mail::to($request->email)->send(new InvoiceMail($order_id));
+            return redirect()->route('order.success');
         } elseif ($request->payment_method == 2) {
             echo 'SSL';
         } elseif ($request->payment_method == 3) {
             echo 'Stripe';
         }
+    }
+    public function order_success(){
+        return view('frontend.order_success');
     }
 }

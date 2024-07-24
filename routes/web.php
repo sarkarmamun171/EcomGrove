@@ -105,6 +105,7 @@ Route::get('/color/remove/{id}',[InventoryController::class,'color_remove'])->na
 Route::get('/size/remove/{id}',[InventoryController::class,'size_remove'])->name('size.remove');
 Route::get('/product/inventory/{id}',[InventoryController::class,'product_inventory'])->name('product.inventory');
 Route::post('product/inventory/store/{id}',[InventoryController::class,'inventory_store'])->name('inventory.store');
+Route::get('/inventory/delete/{id}', [InventoryController::class, 'inventory_delete'])->name('inventory.delete');
 
 //Customer Details
 Route::get('/customer/login',[CustomerAuthController::class,'customer_login'])->name('customer.login');
@@ -130,3 +131,4 @@ Route::get('coupon/delete/{id}',[CouponController::class,'coupon_delete'])->name
 Route::get('/checkout',[CheckoutController::class,'checkout'])->name('checkout');
 Route::post('/getCity',[CheckoutController::class,'getCity']);
 Route::post('/order/store',[CheckoutController::class,'order_store'])->name('order.store');
+Route::get('/order/success',[CheckoutController::class,'order_success'])->name('order.success');

@@ -7,12 +7,12 @@
                 <div class="col col-xs-12">
                     <div class="content clearfix">
                         <div class="error">
-                            <img src="assets/images/error-404.png" alt>
+                            <img src="{{ asset('uploads/product/previewImage/confirmation.webp') }}" alt>
                         </div>
                         <div class="error-message">
                             <h3>Thank You</h3>
                             <p>Your Order has been placed successfully!</p>
-                            <a href="index.html" class="theme-btn">Back to home</a>
+                            <a href="{{ route('index') }}" class="theme-btn">Back to home</a>
                         </div>
                     </div>
                 </div>

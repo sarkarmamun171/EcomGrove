@@ -70,4 +70,8 @@ class InventoryController extends Controller
         }
 
     }
+    function inventory_delete($id){
+        Inventory::find($id)->delete();
+        return back();
+    }
 }
