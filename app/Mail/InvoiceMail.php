@@ -16,9 +16,10 @@ class InvoiceMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public $order_id;
+    public function __construct($order_id)
     {
-        //
+        $this->order_id=$order_id;
     }
 
     /**
