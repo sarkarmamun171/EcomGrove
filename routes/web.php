@@ -115,6 +115,8 @@ Route::post('/customer/login/confirm',[CustomerAuthController::class,'customer_c
 Route::get('/customer/profile',[CustomerController::class,'customer_profile'])->name('customer.profile')->middleware('customer');
 Route::get('/customer/logout',[CustomerController::class,'customer_logout'])->name('customer.logout');
 Route::post('/customer/profile/update',[CustomerController::class,'customer_profile_update'])->name('customer.profile.update');
+Route::get('/customer/order',[CustomerController::class,'customer_order'])->name('customer.order');
+Route::get('/customer/order/invoice/download{id}',[CustomerController::class,'order_invoice_downlaod'])->name('order.invoice.download');
 
 //cart
 Route::post('/cart/store',[CartController::class,'cart_store'])->name('cart.store');

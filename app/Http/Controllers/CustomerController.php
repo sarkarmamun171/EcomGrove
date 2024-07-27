@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Customer;
+use App\Models\Order;
 use Carbon\Carbon;
 use Intervention\Image\Facades\Image;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 class CustomerController extends Controller
 {
     public function customer_profile()
@@ -91,5 +92,18 @@ class CustomerController extends Controller
                 return back()->with('success', 'Profile Update Successfully');
             }
         }
+    }
+    public function customer_order(){
+        $myorders =Order::where('customer_id',Auth::guard('customer')->id())->latest()->paginate(5);
+        return view('frontend.customer.order',[
+            'myorders'=>$myorders,
+        ]);
+    }
+    public function order_invoice_downlaod($id){
+        $order_info = Order::find($id);
+        $pdf = PDF::loadView('frontend.invoice.invoice', [
+            'order_id'=>$order_info->order_id,
+        ]);
+        return $pdf->download('invoice.pdf');
     }
 }

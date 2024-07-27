@@ -119,7 +119,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-2">
                             <div class="navbar-header">
-                                <a class="navbar-brand" href="index.html"><img
+                                <a class="navbar-brand" href="{{ route('index') }}"><img
                                         src="{{ asset('frontend') }}/images/logo.svg" alt="logo"></a>
                             </div>
                         </div>
