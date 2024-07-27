@@ -437,12 +437,18 @@
                                                             <tr>
                                                                 <td
                                                                     style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top; ">
-
-                                                                    Credit Card<br> Credit Card Type: Visa<br> Worldpay
+                                                                        @if (App\Models\Order::where('order_id',$order_id)->first()->payment_method==1)
+                                                                            Cash on Delivary
+                                                                        @elseif(App\Models\Order::where('order_id',$order_id)->first()->payment_method==2)
+                                                                            SSL
+                                                                        @else
+                                                                            Stripe
+                                                                        @endif
+                                                                    {{-- Credit Card<br> Credit Card Type: Visa<br> Worldpay
                                                                     Transaction ID: <a href="#"
                                                                         style="color: #ff0000; text-decoration:underline;">4185939336</a><br>
                                                                     <a href="#" style="color:#b0b0b0;">Right of
-                                                                        Withdrawal</a>
+                                                                        Withdrawal</a> --}}
                                                                 </td>
                                                             </tr>
                                                         </tbody>
