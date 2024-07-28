@@ -106,4 +106,11 @@ class CustomerController extends Controller
         ]);
         return $pdf->download('invoice.pdf');
     }
+    public function cancel_myorder($id){
+        Order::find($id)->update([
+            'order_cancel'=>1,
+        ]);
+        return back();
+    }
+
 }

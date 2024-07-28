@@ -19,4 +19,11 @@ class OrderController extends Controller
         ]);
         return back();
     }
+    public function order_cancel_request(){
+        $cancel_order = Order::where('order_cancel',1)->get();
+        return view('admin.order.order_cancel ',[
+            'cancel_order'=>$cancel_order,
+            ]);
+    }
 }
+

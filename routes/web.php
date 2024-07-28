@@ -118,6 +118,7 @@ Route::get('/customer/logout',[CustomerController::class,'customer_logout'])->na
 Route::post('/customer/profile/update',[CustomerController::class,'customer_profile_update'])->name('customer.profile.update');
 Route::get('/customer/order',[CustomerController::class,'customer_order'])->name('customer.order');
 Route::get('/customer/order/invoice/download{id}',[CustomerController::class,'order_invoice_downlaod'])->name('order.invoice.download');
+Route::get('/cancel/myorder/{id}',[CustomerController::class,'cancel_myorder'])->name('cancel.myorder');
 
 //cart
 Route::post('/cart/store',[CartController::class,'cart_store'])->name('cart.store');
@@ -139,3 +140,4 @@ Route::get('/order/success',[CheckoutController::class,'order_success'])->name('
 //Admin order details
 Route::get('/admin/order',[OrderController::class,'admin_order'])->name('admin.order');
 Route::post('/order/status/update',[OrderController::class,'order_status_update'])->name('order.status.update');
+Route::get('/order/cancel/request',[OrderController::class,'order_cancel_request'])->name('order.cancel.request');

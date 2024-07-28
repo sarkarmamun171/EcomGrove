@@ -2,8 +2,9 @@
 @section('content')
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex justify-content-between">
                 <h3>Order List</h3>
+                <a href="{{ route('order.cancel.request') }}" class="btn btn-info">Order Cancel Request</a>
             </div>
             <div class="card-body">
                 <table class="table table-bordered">

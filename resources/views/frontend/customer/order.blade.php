@@ -58,7 +58,7 @@
                             </td>
                             <td>
                                 <a href="{{ route('order.invoice.download',$myorder->id) }}" class="btn btn-success">Download Invoice</a>
-                                <a href="" class="btn btn-warning">Cancel Order</a>
+                                <a href="{{ route('cancel.myorder',$myorder->id) }}" class="btn btn-warning">Cancel Order</a>
                             </td>
                         </tr>
                     @endforeach
