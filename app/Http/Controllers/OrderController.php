@@ -13,4 +13,10 @@ class OrderController extends Controller
             'orders'=>$orders,
         ]);
     }
+    public function order_status_update(Request $request){
+        Order::where('order_id',$request->order_id)->update([
+            'status'=>$request->status,
+        ]);
+        return back();
+    }
 }

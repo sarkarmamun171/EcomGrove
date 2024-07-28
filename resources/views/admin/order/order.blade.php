@@ -41,17 +41,23 @@
                                 @endif
                             </td>
                             <td>
-                                <form action="{{ route('order.status.update',$order->order_id) }}" method="post">
+                                <form action="{{ route('order.status.update') }}" method="POST">
                                     @csrf
-                                <select class="form-select" name="status" aria-label="Default select example">
-                                    <option value="">Change Status</option>
-                                    <option  {{ $order->status == 0?'selected':'' }} value="0">Placed</option>
-                                    <option  {{ $order->status == 1?'selected':'' }} value="1">Processing</option>
-                                    <option   {{ $order->status == 2?'selected':'' }} value="2">Shipped</option>
-                                    <option  {{ $order->status == 3?'selected':'' }} value="3">Out for Delivery</option>
-                                    <option  {{ $order->status == 4?'selected':'' }} value="4">Delivered</option>
-                                    <option  {{ $order->status == 5?'selected':'' }} value="5">Canceled</option>
-                                  </select>
+                                    <input type="hidden" name="order_id" value="{{ $order->order_id }}">
+                                    <div class="dropdown">
+                                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Select Status
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <button name="status" class="dropdown-item">Change Status</button>
+                                            <button name="status" class="dropdown-item" {{ $order->status==0?'selected':'' }} style="color:{{ $order->status==0?'blue':'' }}" value="0">Placed</button>
+                                            <button name="status" class="dropdown-item" {{ $order->status==1?'selected':'' }} style="color:{{ $order->status==1?'blue':'' }}" value="1">Processing</button>
+                                            <button name="status" class="dropdown-item" {{ $order->status==2?'selected':'' }} style="color:{{ $order->status==2?'blue':'' }}" value="2">Shipped</button>
+                                            <button name="status" class="dropdown-item" {{ $order->status==3?'selected':'' }} style="color:{{ $order->status==3?'blue':'' }}" value="3">Out for Delivery</button>
+                                            <button name="status" class="dropdown-item" {{ $order->status==4?'selected':'' }} style="color:{{ $order->status==4?'blue':'' }}" value="4">Delivered</button>
+                                            <button name="status" class="dropdown-item" {{ $order->status==5?'selected':'' }} style="color:{{ $order->status==5?'blue':'' }}" value="5">Canceled</button>
+                                        </div>
+                                    </div>
                                 </form>
                             </td>
                         </tr>

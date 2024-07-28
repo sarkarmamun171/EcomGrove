@@ -138,3 +138,4 @@ Route::get('/order/success',[CheckoutController::class,'order_success'])->name('
 
 //Admin order details
 Route::get('/admin/order',[OrderController::class,'admin_order'])->name('admin.order');
+Route::post('/order/status/update',[OrderController::class,'order_status_update'])->name('order.status.update');
