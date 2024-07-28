@@ -221,9 +221,9 @@
       </div>
     </header>
     @php
-        // $order_id = $order_id->order_id;
+        //$order_id = $order_id->order_id;
         $bill = App\Models\Billing::where('order_id', $order_id)->first();
-        // $ship = App\Models\Shipping::where('order_id', $order_id)->first();
+        $ship = App\Models\Shipping::where('order_id', $order_id)->first();
     @endphp
 
     <main>
@@ -240,10 +240,10 @@
             {{-- @if ($ship->status == 1) --}}
                 <div>
                     <div class="to">SHIPPING TO:</div>
-                    <h2 class="name"></h2>
-                    <div class="address"> <br>
-                    Country : </div>
-                    <div class="email"><a href="mailto:john@example.com"> </a></div>
+                    <h2 class="name">{{ $ship->ship_fname.' '.$ship->ship_lname }}</h2>
+                    <div class="address">{{ $ship->ship_address }} City:{{ $ship->rel_to_city->name }} Zip:{{ $ship->ship_zip }}<br>
+                    Country :{{ $ship->rel_to_country->name }} </div>
+                    <div class="email"><a href="mailto:john@example.com">{{ $ship->ship_email }} </a></div>
                 </div>
             {{-- @endif --}}
         </div>
@@ -262,44 +262,44 @@
             <th class="total">TOTAL</th>
           </tr>
         </thead>
-            {{-- @php
+            @php
                 $orderProducts = App\Models\OrderProduct::where('order_id', $order_id)->get();
-            @endphp --}}
+            @endphp
         <tbody>
-        {{-- @foreach ($orderProducts as $sl=>$product) --}}
+        @foreach ($orderProducts as $sl=>$product)
 
             <tr>
-                <td class="no"></td>
-                <td class="desc"><h3></h3></td>
-                <td class="unit"></td>
-                <td class="qty"></td>
-                <td class="total"></td>
+                <td class="no">{{ $sl+1 }}</td>
+                <td class="desc"><h3>{{ $product->rel_to_product->product_name }}</h3></td>
+                <td class="unit">{{ $product->price }}</td>
+                <td class="qty">{{ $product->quantity }}</td>
+                <td class="total">{{ $product->price*$product->quantity }}</td>
             </tr>
-        {{-- @endforeach --}}
+        @endforeach
         </tbody>
-        {{-- @php
+        @php
             $orders = App\Models\Order::where('order_id', $order_id)->first();
-        @endphp --}}
+        @endphp
         <tfoot>
           <tr>
             <td colspan="2"></td>
             <td colspan="2">SUBTOTAL</td>
-            <td></td>
+            <td>{{ $orders->sub_total }}</td>
           </tr>
           <tr>
             <td colspan="2"></td>
             <td colspan="2">Delivery Charge </td>
-            <td></td>
+            <td>{{ $orders->charge }}</td>
           </tr>
           <tr>
             <td colspan="2"></td>
             <td colspan="2">Discount </td>
-            <td></td>
+            <td>{{ $orders->discount }}</td>
           </tr>
           <tr>
             <td colspan="2"></td>
             <td colspan="2">GRAND TOTAL</td>
-            <td></td>
+            <td>{{ $orders->total }}</td>
           </tr>
         </tfoot>
       </table>
