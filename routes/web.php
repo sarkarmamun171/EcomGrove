@@ -10,6 +10,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubcategoryController;
@@ -134,3 +135,6 @@ Route::get('/checkout',[CheckoutController::class,'checkout'])->name('checkout')
 Route::post('/getCity',[CheckoutController::class,'getCity']);
 Route::post('/order/store',[CheckoutController::class,'order_store'])->name('order.store');
 Route::get('/order/success',[CheckoutController::class,'order_success'])->name('order.success');
+
+//Admin order details
+Route::get('/admin/order',[OrderController::class,'admin_order'])->name('admin.order');

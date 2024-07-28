@@ -1093,6 +1093,11 @@
                             <span class="nav-text">Coupon</span>
                         </a>
                     </li>
+                    <li><a class="#" href="{{ route('admin.order') }}">
+                        <i class="fa-brands fa-first-order"></i></i>
+                            <span class="nav-text">Order</span>
+                        </a>
+                    </li>
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-381-layer-1"></i>
                             <span class="nav-text">Pages</span>
