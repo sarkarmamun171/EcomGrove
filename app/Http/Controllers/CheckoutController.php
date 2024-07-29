@@ -121,7 +121,9 @@ class CheckoutController extends Controller
             Mail::to($request->email)->send(new InvoiceMail($order_id));
             return redirect()->route('order.success');
         } elseif ($request->payment_method == 2) {
-            echo 'SSL';
+            $data = $request->all();
+            return redirect()->route('pay')->with('data', $data);
+
         } elseif ($request->payment_method == 3) {
             echo 'Stripe';
         }
