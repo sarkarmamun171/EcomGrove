@@ -12,6 +12,8 @@ class SslCommerzPaymentController extends Controller
     public function index(Request $request)
     {
         $data = (session('data'));
+        // echo $data['fname'];
+        // die();
 
         $post_data = array();
         $post_data['total_amount'] = '10'; # You cant not pay less than 10
@@ -58,12 +60,12 @@ class SslCommerzPaymentController extends Controller
                 'name' => $data['fname'],
                 'email' => $data['email'],
                 'phone' => $data['phone'],
-                'amount' => $data['sub_total'] +  $data['charge'] - $data['discount'] ,
+                'amount' => $data['sub'] +  $data['charge'] - $data['discount'] ,
                 'status' => 'Pending',
                 'address' => $data['address'],
                 'transaction_id' => $post_data['tran_id'],
                 'currency' => $post_data['currency'],
-                'customer_id' => $data['customer_id'],
+                'customer_id'=> $data['customer_id'],
                 'lname' => $data['lname'],
                 'city_id' => $data['city_id'],
                 'zip' => $data['zip'],
