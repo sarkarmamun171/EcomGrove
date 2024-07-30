@@ -145,7 +145,7 @@ Route::get('/order/cancel/request',[OrderController::class,'order_cancel_request
 
 
 // SSLCOMMERZ Start
-Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+Route::post('/pay', [SslCommerzPaymentController::class, 'index'])->name('pay');
 Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
 
 Route::post('/success', [SslCommerzPaymentController::class, 'success']);

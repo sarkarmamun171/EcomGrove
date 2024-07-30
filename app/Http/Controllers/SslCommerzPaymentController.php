@@ -9,21 +9,9 @@ use App\Library\SslCommerz\SslCommerzNotification;
 class SslCommerzPaymentController extends Controller
 {
 
-    public function exampleEasyCheckout()
-    {
-        return view('exampleEasycheckout');
-    }
-
-    public function exampleHostedCheckout()
-    {
-        return view('exampleHosted');
-    }
-
     public function index(Request $request)
     {
-        # Here you have to receive all the order data to initate the payment.
-        # Let's say, your oder transaction informations are saving in a table called "sslorders"
-        # In "sslorders" table, order unique identity is "transaction_id". "status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
+        $data = (session('data'));
 
         $post_data = array();
         $post_data['total_amount'] = '10'; # You cant not pay less than 10
@@ -67,14 +55,35 @@ class SslCommerzPaymentController extends Controller
         $update_product = DB::table('sslorders')
             ->where('transaction_id', $post_data['tran_id'])
             ->updateOrInsert([
-                'name' => $post_data['cus_name'],
-                'email' => $post_data['cus_email'],
-                'phone' => $post_data['cus_phone'],
-                'amount' => $post_data['total_amount'],
+                'name' => $data['fname'],
+                'email' => $data['email'],
+                'phone' => $data['phone'],
+                'amount' => $data['sub_total'] +  $data['charge'] - $data['discount'] ,
                 'status' => 'Pending',
-                'address' => $post_data['cus_add1'],
+                'address' => $data['address'],
                 'transaction_id' => $post_data['tran_id'],
-                'currency' => $post_data['currency']
+                'currency' => $post_data['currency'],
+                'customer_id' => $data['customer_id'],
+                'lname' => $data['lname'],
+                'city_id' => $data['city_id'],
+                'zip' => $data['zip'],
+                'company' => $data['company'],
+                'message' => $data['message'],
+
+                'ship_fname' => $data['ship_fname'],
+                'ship_lname' => $data['ship_lname'],
+                'ship_country' => $data['ship_country'],
+                'ship_city' => $data['ship_city'],
+                'ship_zip' => $data['ship_zip'],
+                'ship_company' => $data['ship_company'],
+                'ship_email' => $data['ship_email'],
+                'ship_phone' => $data['ship_phone'],
+                'ship_address' => $data['ship_address'],
+
+                'charge' => $data['charge'],
+                'discount' => $data['discount'],
+                'sub_total' => $data['sub_total'],
+
             ]);
 
         $sslc = new SslCommerzNotification();
