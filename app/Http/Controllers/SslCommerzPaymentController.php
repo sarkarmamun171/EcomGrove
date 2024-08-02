@@ -72,8 +72,8 @@ class SslCommerzPaymentController extends Controller
                 'company' => $data['company'],
                 'message' => $data['message'],
 
-                'ship_fname' => $data['ship_fname'],
-                'ship_lname' => $data['ship_lname'],
+                // 'ship_fname' => $data['ship_fname'],
+                // 'ship_lname' => $data['ship_lname'],
                 'ship_country' => $data['ship_country'],
                 'ship_city' => $data['ship_city'],
                 'ship_zip' => $data['ship_zip'],
