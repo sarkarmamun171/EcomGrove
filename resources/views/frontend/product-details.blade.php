@@ -173,7 +173,7 @@
                                                         <div id="div-comment-1">
                                                             <div class="comment-theme">
                                                                 <div class="comment-image"><img
-                                                                        src="assets/images/blog-details/comments-author/img-1.jpg"
+                                                                        src="{{ asset('frontend') }}/images/blog-details/comments-author/img-1.jpg"
                                                                         alt></div>
                                                             </div>
                                                             <div class="comment-main-area">
@@ -205,143 +205,80 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <ul class="children">
-                                                            <li class="comment">
-                                                                <div>
-                                                                    <div class="comment-theme">
-                                                                        <div class="comment-image"><img
-                                                                                src="assets/images/blog-details/comments-author/img-2.jpg"
-                                                                                alt></div>
-                                                                    </div>
-                                                                    <div class="comment-main-area">
-                                                                        <div class="comment-wrapper">
-                                                                            <div class="comments-meta">
-                                                                                <h4>Leslie Alexander</h4>
-                                                                                <div class="rating-product">
-                                                                                    <i class="fi flaticon-star"></i>
-                                                                                    <i class="fi flaticon-star"></i>
-                                                                                    <i class="fi flaticon-star"></i>
-                                                                                    <i class="fi flaticon-star"></i>
-                                                                                    <i class="fi flaticon-star"></i>
-                                                                                </div>
-                                                                                <span class="comments-date">December 26,
-                                                                                    2022 at 5:30 am</span>
-                                                                            </div>
-                                                                            <div class="comment-area">
-                                                                                <p>Turpis nulla proin donec a ridiculus. Mi
-                                                                                    suspendisse faucibus sed lacus. Vitae
-                                                                                    risus eu nullam sed quam.
-                                                                                    Eget aenean id augue pellentesque turpis
-                                                                                    magna egestas arcu sed.
-                                                                                    Aliquam non faucibus massa adipiscing
-                                                                                    nibh sit. Turpis integer aliquam aliquam
-                                                                                    aliquam.
-                                                                                    <a class="comment-reply-link"
-                                                                                        href="#"><span>Reply...</span></a>
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="comment">
-                                                        <div>
-                                                            <div class="comment-theme">
-                                                                <div class="comment-image"><img
-                                                                        src="assets/images/blog-details/comments-author/img-1.jpg"
-                                                                        alt></div>
-                                                            </div>
-                                                            <div class="comment-main-area">
-                                                                <div class="comment-wrapper">
-                                                                    <div class="comments-meta">
-                                                                        <h4>Jenny Wilson</h4>
-                                                                        <div class="rating-product">
-                                                                            <i class="fi flaticon-star"></i>
-                                                                            <i class="fi flaticon-star"></i>
-                                                                            <i class="fi flaticon-star"></i>
-                                                                            <i class="fi flaticon-star"></i>
-                                                                            <i class="fi flaticon-star"></i>
-                                                                        </div>
-                                                                        <span class="comments-date">December 30, 2022 at
-                                                                            3:12 pm</span>
-                                                                    </div>
-                                                                    <div class="comment-area">
-                                                                        <p>Turpis nulla proin donec a ridiculus. Mi
-                                                                            suspendisse faucibus sed lacus. Vitae risus eu
-                                                                            nullam sed quam.
-                                                                            Eget aenean id augue pellentesque turpis magna
-                                                                            egestas arcu sed.
-                                                                            Aliquam non faucibus massa adipiscing nibh sit.
-                                                                            Turpis integer aliquam aliquam aliquam.
-                                                                            <a class="comment-reply-link"
-                                                                                href="#"><span>Reply...</span></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                     </li>
                                                 </ol>
                                             </div> <!-- end comments-section -->
                                             <div class="col col-lg-10 col-12 review-form-wrapper">
-                                                <div class="review-form">
-                                                    <h4>Add a review</h4>
-                                                    <form>
-                                                        <div class="give-rat-sec">
-                                                            <div class="give-rating">
-                                                                <label>
-                                                                    <input type="radio" name="stars" value="1">
-                                                                    <span class="icon">★</span>
-                                                                </label>
-                                                                <label>
-                                                                    <input type="radio" name="stars" value="2">
-                                                                    <span class="icon">★</span>
-                                                                    <span class="icon">★</span>
-                                                                </label>
-                                                                <label>
-                                                                    <input type="radio" name="stars" value="3">
-                                                                    <span class="icon">★</span>
-                                                                    <span class="icon">★</span>
-                                                                    <span class="icon">★</span>
-                                                                </label>
-                                                                <label>
-                                                                    <input type="radio" name="stars" value="4">
-                                                                    <span class="icon">★</span>
-                                                                    <span class="icon">★</span>
-                                                                    <span class="icon">★</span>
-                                                                    <span class="icon">★</span>
-                                                                </label>
-                                                                <label>
-                                                                    <input type="radio" name="stars" value="5">
-                                                                    <span class="icon">★</span>
-                                                                    <span class="icon">★</span>
-                                                                    <span class="icon">★</span>
-                                                                    <span class="icon">★</span>
-                                                                    <span class="icon">★</span>
-                                                                </label>
+                                                @auth('customer')
+                                                    @if (App\Models\Orderproduct::where('customer_id',Auth::guard('customer')->id())->where('product_id',$product_details->id)->exists())
+                                                        @if ((App\Models\Orderproduct::where('customer_id',Auth::guard('customer')->id())->where('product_id',$product_details->id)->whereNotNull('review')->first() == false)
+                                                            <div class="review-form">
+                                                                <h4>Add a review</h4>
+                                                                <form>
+                                                                    <div class="give-rat-sec">
+                                                                        <div class="give-rating">
+                                                                            <label>
+                                                                                <input type="radio" name="stars" value="1">
+                                                                                <span class="icon">★</span>
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="stars" value="2">
+                                                                                <span class="icon">★</span>
+                                                                                <span class="icon">★</span>
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="stars" value="3">
+                                                                                <span class="icon">★</span>
+                                                                                <span class="icon">★</span>
+                                                                                <span class="icon">★</span>
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="stars" value="4">
+                                                                                <span class="icon">★</span>
+                                                                                <span class="icon">★</span>
+                                                                                <span class="icon">★</span>
+                                                                                <span class="icon">★</span>
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="stars" value="5">
+                                                                                <span class="icon">★</span>
+                                                                                <span class="icon">★</span>
+                                                                                <span class="icon">★</span>
+                                                                                <span class="icon">★</span>
+                                                                                <span class="icon">★</span>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <textarea class="form-control" placeholder="Write Comment..."></textarea>
+                                                                    </div>
+                                                                    <div class="name-input">
+                                                                        <input type="text" class="form-control" placeholder="Name"
+                                                                            required>
+                                                                    </div>
+                                                                    <div class="name-email">
+                                                                        <input type="email" class="form-control"
+                                                                            placeholder="Email" required>
+                                                                    </div>
+                                                                    <div class="rating-wrapper">
+                                                                        <div class="submit">
+                                                                            <button type="submit" class="theme-btn-s2">Post
+                                                                                review</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
                                                             </div>
-                                                        </div>
-                                                        <div>
-                                                            <textarea class="form-control" placeholder="Write Comment..."></textarea>
-                                                        </div>
-                                                        <div class="name-input">
-                                                            <input type="text" class="form-control" placeholder="Name"
-                                                                required>
-                                                        </div>
-                                                        <div class="name-email">
-                                                            <input type="email" class="form-control"
-                                                                placeholder="Email" required>
-                                                        </div>
-                                                        <div class="rating-wrapper">
-                                                            <div class="submit">
-                                                                <button type="submit" class="theme-btn-s2">Post
-                                                                    review</button>
+                                                            @else
+                                                            <div class="alert alert-warning">
+                                                                <h3>Already Reviewed</h3>
                                                             </div>
+                                                        @endif
+                                                        @else
+                                                        <div class="alert alert-warning">
+                                                            <h3>Please review after purchasing the product</h3>
                                                         </div>
-                                                    </form>
-                                                </div>
+                                                    @endif
+                                                @endauth
                                             </div>
                                         </div> <!-- end comments-area -->
                                     </div>
