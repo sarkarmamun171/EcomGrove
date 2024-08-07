@@ -6,8 +6,10 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Subcategory;
 use App\Models\Inventory;
+use App\Models\Orderproduct;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class FrontendController extends Controller
 {
     public function index()
@@ -41,6 +43,7 @@ class FrontendController extends Controller
     public function product_details($slug)
     {
         $product_id = Product::where('slug', $slug)->first()->id;
+        $reviews = Orderproduct::where('product_id',$product_id)->whereNotNull('review')->get();
         $product_details = Product::find($product_id);
         $availble_colors = Inventory::where('product_id', $product_id)->groupBy('color_id')->selectRaw('count(*) as total, color_id')->get();
         $availble_size = Inventory::where('product_id', $product_id)->groupBy('size_id')->selectRaw('count(*) as total_size,size_id')->get();
@@ -49,6 +52,7 @@ class FrontendController extends Controller
             'product_details' => $product_details,
             'availble_colors' => $availble_colors,
             'availble_size' => $availble_size,
+            'reviews' => $reviews,
         ]);
     }
     public function getSize(Request $request)
@@ -73,5 +77,13 @@ class FrontendController extends Controller
             $quanties = '<button class="btn btn-success">'.$quanties.' In stock</button>';
         }
         echo $quanties;
+    }
+    public function review_store(Request $request){
+        Orderproduct::where('customer_id',Auth::guard('customer')->id())->where('product_id',$request->product_id)->first()->update([
+            'star'=>$request->stars,
+            'review'=>$request->review,
+            'updated_at'=>Carbon::now(),
+        ]);
+        return back();
     }
 }

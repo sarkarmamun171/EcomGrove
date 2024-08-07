@@ -138,7 +138,7 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="Ratings-tab" data-bs-toggle="pill" data-bs-target="#Ratings"
                             type="button" role="tab" aria-controls="Ratings" aria-selected="false">Reviews
-                            (3)</button>
+                            ({{ $reviews->count() }})</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="Information-tab" data-bs-toggle="pill"
@@ -167,80 +167,86 @@
                                     <div class="col-lg-12 col-12">
                                         <div class="comments-area">
                                             <div class="comments-section">
-                                                <h3 class="comments-title">3 reviews for Stylish Pink Coat</h3>
+                                                <h3 class="comments-title">{{ $reviews->count() }} reviews for {{ $product_details->product_name }}</h3>
                                                 <ol class="comments">
-                                                    <li class="comment even thread-even depth-1" id="comment-1">
-                                                        <div id="div-comment-1">
-                                                            <div class="comment-theme">
-                                                                <div class="comment-image"><img
-                                                                        src="{{ asset('frontend') }}/images/blog-details/comments-author/img-1.jpg"
-                                                                        alt></div>
-                                                            </div>
-                                                            <div class="comment-main-area">
-                                                                <div class="comment-wrapper">
-                                                                    <div class="comments-meta">
-                                                                        <h4>Lily Zener</h4>
-                                                                        <span class="comments-date">December 25, 2022 at
-                                                                            5:30 am</span>
-                                                                        <div class="rating-product">
-                                                                            <i class="fi flaticon-star"></i>
-                                                                            <i class="fi flaticon-star"></i>
-                                                                            <i class="fi flaticon-star"></i>
-                                                                            <i class="fi flaticon-star"></i>
-                                                                            <i class="fi flaticon-star"></i>
-                                                                        </div>
+                                                    @foreach ($reviews as $review)
+                                                        <li class="comment even thread-even depth-1" id="comment-1">
+                                                            <div id="div-comment-1">
+                                                                <div class="comment-theme">
+                                                                    <div class="comment-image">
+                                                                        @if ($review->rel_to_customer->photo == null)
+                                                                            <img src="{{ Avatar::create($review->rel_to_customer->fname)->toBase64() }}"
+                                                                                width="50" class="m-auto" />
+                                                                        @else
+                                                                            <img src="{{ asset('uploads/customer') }}/{{ $review->rel_to_customer->photo }}"
+                                                                                width="50" alt=""
+                                                                                class="m-auto" />
+                                                                        @endif
                                                                     </div>
-                                                                    <div class="comment-area">
-                                                                        <p>Turpis nulla proin donec a ridiculus. Mi
-                                                                            suspendisse faucibus sed lacus. Vitae risus eu
-                                                                            nullam sed quam.
-                                                                            Eget aenean id augue pellentesque turpis magna
-                                                                            egestas arcu sed.
-                                                                            Aliquam non faucibus massa adipiscing nibh sit.
-                                                                            Turpis integer aliquam aliquam aliquam.
-                                                                            <a class="comment-reply-link"
-                                                                                href="#"><span>Reply...</span></a>
-                                                                        </p>
+                                                                </div>
+                                                                <div class="comment-main-area">
+                                                                    <div class="comment-wrapper">
+                                                                        <div class="comments-meta">
+                                                                            <h4>{{ $review->rel_to_customer->fname.' '.$review->rel_to_customer->lname }}</h4>
+                                                                            <span class="comments-date">{{ $review->updated_at->diffForHumans() }}</span>
+                                                                            <div class="rating-product">
+                                                                                @for($i=1;$i<=$review->star;$i++)
+                                                                                  <i class="fi flaticon-star"></i>
+                                                                                @endfor
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="comment-area">
+                                                                            <p>{{ $review->review }}
+                                                                                <a class="comment-reply-link"
+                                                                                    href="#"><span>Reply...</span></a>
+                                                                            </p>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </li>
+                                                        </li>
+                                                    @endforeach
                                                 </ol>
                                             </div> <!-- end comments-section -->
                                             <div class="col col-lg-10 col-12 review-form-wrapper">
                                                 @auth('customer')
-                                                    @if (App\Models\Orderproduct::where('customer_id',Auth::guard('customer')->id())->where('product_id',$product_details->id)->exists())
-                                                        @if ((App\Models\Orderproduct::where('customer_id',Auth::guard('customer')->id())->where('product_id',$product_details->id)->whereNotNull('review')->first() == false)
+                                                    @if (App\Models\Orderproduct::where('customer_id', Auth::guard('customer')->id())->where('product_id', $product_details->id)->exists())
+                                                        @if (App\Models\Orderproduct::where('customer_id', Auth::guard('customer')->id())->where('product_id', $product_details->id)->whereNotNull('review')->first() == false)
                                                             <div class="review-form">
                                                                 <h4>Add a review</h4>
-                                                                <form>
+                                                                <form action="{{ route('review.store') }}" method="POST">
+                                                                    @csrf
                                                                     <div class="give-rat-sec">
                                                                         <div class="give-rating">
                                                                             <label>
-                                                                                <input type="radio" name="stars" value="1">
+                                                                                <input type="radio" name="stars"
+                                                                                    value="1">
                                                                                 <span class="icon">★</span>
                                                                             </label>
                                                                             <label>
-                                                                                <input type="radio" name="stars" value="2">
-                                                                                <span class="icon">★</span>
-                                                                                <span class="icon">★</span>
-                                                                            </label>
-                                                                            <label>
-                                                                                <input type="radio" name="stars" value="3">
-                                                                                <span class="icon">★</span>
+                                                                                <input type="radio" name="stars"
+                                                                                    value="2">
                                                                                 <span class="icon">★</span>
                                                                                 <span class="icon">★</span>
                                                                             </label>
                                                                             <label>
-                                                                                <input type="radio" name="stars" value="4">
-                                                                                <span class="icon">★</span>
+                                                                                <input type="radio" name="stars"
+                                                                                    value="3">
                                                                                 <span class="icon">★</span>
                                                                                 <span class="icon">★</span>
                                                                                 <span class="icon">★</span>
                                                                             </label>
                                                                             <label>
-                                                                                <input type="radio" name="stars" value="5">
+                                                                                <input type="radio" name="stars"
+                                                                                    value="4">
+                                                                                <span class="icon">★</span>
+                                                                                <span class="icon">★</span>
+                                                                                <span class="icon">★</span>
+                                                                                <span class="icon">★</span>
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="stars"
+                                                                                    value="5">
                                                                                 <span class="icon">★</span>
                                                                                 <span class="icon">★</span>
                                                                                 <span class="icon">★</span>
@@ -250,16 +256,20 @@
                                                                         </div>
                                                                     </div>
                                                                     <div>
-                                                                        <textarea class="form-control" placeholder="Write Comment..."></textarea>
+                                                                        <textarea class="form-control" name="review" placeholder="Write Comment..."></textarea>
                                                                     </div>
                                                                     <div class="name-input">
-                                                                        <input type="text" class="form-control" placeholder="Name"
-                                                                            required>
+                                                                        <input type="text" class="form-control"
+                                                                            placeholder="Name"
+                                                                            value="{{ Auth::guard('customer')->user()->fname }}">
                                                                     </div>
                                                                     <div class="name-email">
                                                                         <input type="email" class="form-control"
-                                                                            placeholder="Email" required>
+                                                                            placeholder="Email"
+                                                                            value="{{ Auth::guard('customer')->user()->email }}">
                                                                     </div>
+                                                                    <input type="hidden" name="product_id"
+                                                                        value="{{ $product_details->id }}">
                                                                     <div class="rating-wrapper">
                                                                         <div class="submit">
                                                                             <button type="submit" class="theme-btn-s2">Post
@@ -268,12 +278,12 @@
                                                                     </div>
                                                                 </form>
                                                             </div>
-                                                            @else
+                                                        @else
                                                             <div class="alert alert-warning">
                                                                 <h3>Already Reviewed</h3>
                                                             </div>
                                                         @endif
-                                                        @else
+                                                    @else
                                                         <div class="alert alert-warning">
                                                             <h3>Please review after purchasing the product</h3>
                                                         </div>
@@ -347,14 +357,13 @@
                             },
                             success: function(data) {
                                 $('.stock').html(data);
-                                 var q = $('.abc').val();
-                                 alert(q);
-                                 if (q==0) {
-                                     $('.card_add').attr('disabled','');
-                                 }
-                                 else{
-                                     $('.card_add').removeAttr('disabled','');
-                                 }
+                                var q = $('.abc').val();
+                                alert(q);
+                                if (q == 0) {
+                                    $('.card_add').attr('disabled', '');
+                                } else {
+                                    $('.card_add').removeAttr('disabled', '');
+                                }
                             }
                         })
                     });

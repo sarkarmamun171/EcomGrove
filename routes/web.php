@@ -154,3 +154,6 @@ Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //SSLCOMMERZ END
+
+//Reviwe
+Route::post('/review/store',[FrontendController::class,'review_store'])->name('review.store');
