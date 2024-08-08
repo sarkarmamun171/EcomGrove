@@ -169,13 +169,20 @@
                                         </a>
                                         @endif
                                     </h2>
+                                    @php
+                                    $total_stars = App\Models\OrderProduct::where('product_id', $product->id)->whereNotNull('review')->sum('star');
+                                    $total_review = App\Models\OrderProduct::where('product_id', $product->id)->whereNotNull('review')->count();
+
+                                        $avg = 0;
+                                        if($total_review != 0){
+                                            $avg = round($total_stars/$total_review);
+                                        }
+                                    @endphp
                                     <div class="rating-product">
-                                        <i class="fi flaticon-star"></i>
-                                        <i class="fi flaticon-star"></i>
-                                        <i class="fi flaticon-star"></i>
-                                        <i class="fi flaticon-star"></i>
-                                        <i class="fi flaticon-star"></i>
-                                        <span>130</span>
+                                        @for ($i=1; $i<=$avg; $i++ )
+                                            <i class="fi flaticon-star"></i>
+                                        @endfor
+                                        <span>{{ $total_review==0?'':$total_review }}</span>
                                     </div>
                                     <div class="price">
                                         <span class="present-price">&#2547;{{ number_format($product->after_discount) }}</span>
@@ -585,7 +592,7 @@
         <!-- end of themart-highlight-product-section -->
 
         <!-- start of themart-cta-section -->
-        <section class="themart-cta-section section-padding">
+        <section class="themart-cta-section section-padding" id="subscriber">
             <div class="container">
                 <div class="cta-wrap">
                     <div class="row">
@@ -593,14 +600,18 @@
                             <div class="cta-content">
                                 <h2>Subscribe Our Newsletter & <br>
                                     Get 30% Discounts For Next Order</h2>
-                                <form>
+                                <form action="{{ route('subscribar.store') }}" method="POST">
+                                    @csrf
                                     <div class="input-1">
                                         <input type="email" class="form-control" placeholder="Your Email..."
-                                            required="">
+                                            name="email">
                                         <div class="submit clearfix">
                                             <button class="theme-btn-s2" type="submit">Subscribe</button>
                                         </div>
                                     </div>
+                                    @if (session('subscriber'))
+                                        <div class="alert alert-info mt-2">{{ session('subscriber') }}</div>
+                                    @endif
                                 </form>
                             </div>
 

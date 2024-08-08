@@ -42,6 +42,12 @@
                                 </div>
                             </div>
                         </div>
+                        @php
+                            $avg = 0;
+                            if($reviews->count()!=0){
+                                $avg = round($total_star/$reviews->count());
+                            }
+                        @endphp
                         <div class="col-lg-7">
                             <div class="product-single-content">
                                 <h2>{{ $product_details->product_name }}</h2>
@@ -51,12 +57,10 @@
                                     <del class="old-price">&#2547;{{ number_format($product_details->price) }}</del>
                                 </div>
                                 <div class="rating-product">
+                                    @for ($i=1;$i<=$avg;$i++)
                                     <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <span>120</span>
+                                    @endfor
+                                    <span>{{ $reviews->count() }}</span>
                                 </div>
                                 <p>{{ $product_details->short_description }}</p>
                                 <div class="product-filter-item color">

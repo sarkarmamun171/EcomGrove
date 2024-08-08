@@ -18,6 +18,7 @@ use App\Http\Controllers\UserController;
 use App\Models\Subcategory;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SslCommerzPaymentController;
+use App\Http\Controllers\SubscriberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -157,3 +158,5 @@ Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 
 //Reviwe
 Route::post('/review/store',[FrontendController::class,'review_store'])->name('review.store');
+//Subscribar
+Route::post('/subscribar/store',[SubscriberController::class,'subscribar_store'])->name('subscribar.store');
