@@ -1098,6 +1098,11 @@
                             <span class="nav-text">Order</span>
                         </a>
                     </li>
+                    <li><a class="#" href="{{ route('subscribar') }}">
+                        <i class="fa-solid fa-subscript"></i></i>
+                            <span class="nav-text">Subscriber</span>
+                        </a>
+                    </li>
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-381-layer-1"></i>
                             <span class="nav-text">Pages</span>

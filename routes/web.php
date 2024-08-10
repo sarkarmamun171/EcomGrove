@@ -159,4 +159,6 @@ Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //Reviwe
 Route::post('/review/store',[FrontendController::class,'review_store'])->name('review.store');
 //Subscribar
+Route::get('/subscribar',[SubscriberController::class,'subscribar'])->name('subscribar');
 Route::post('/subscribar/store',[SubscriberController::class,'subscribar_store'])->name('subscribar.store');
+Route::get('/send/newsletter/{id}',[SubscriberController::class,'send_newsletter'])->name('send.newsletter');
