@@ -11,6 +11,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubcategoryController;
@@ -162,3 +163,7 @@ Route::post('/review/store',[FrontendController::class,'review_store'])->name('r
 Route::get('/subscribar',[SubscriberController::class,'subscribar'])->name('subscribar');
 Route::post('/subscribar/store',[SubscriberController::class,'subscribar_store'])->name('subscribar.store');
 Route::get('/send/newsletter/{id}',[SubscriberController::class,'send_newsletter'])->name('send.newsletter');
+
+//Password Reset System
+Route::get('password/reset',[PasswordResetController::class,'password_reset'])->name('password.reset');
+Route::post('/password/reset/request',[PasswordResetController::class,'passwordreset_request'])->name('passwordreset.request');

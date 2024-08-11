@@ -96,7 +96,7 @@
                                         <div class="check-box-wrap">
 
                                             <div class="forget-btn">
-                                                <a href="forgot.html">Forgot Password?</a>
+                                                <a href="{{ route('password.reset') }}">Forgot Password?</a>
                                             </div>
                                         </div>
                                     </div>
