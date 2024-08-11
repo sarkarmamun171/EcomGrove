@@ -36,7 +36,11 @@ class PasswordResetController extends Controller
         ]);
     }
     public function password_reset_confirm(Request $request ,$token){
-        echo $token;
-        print_r($request->all());
+        $customer_id = Password_reset::where('token',$token)->first()->customer_id;
+        Customer::find($customer_id)->update([
+            'password'=>bcrypt($request->password),
+            'updated_at'=>Carbon::now(),
+        ]);
+        return back()->with('success_pass',"Password Reset Successfully");
     }
 }

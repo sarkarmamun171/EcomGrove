@@ -67,7 +67,9 @@
                                             <span class="">Back To Home</span>
                                         </a>
                                     </div>
-
+                                    @if (session('success_pass'))
+                                        <div class="alert alert-info">{{ session('success_pass') }}</div>
+                                    @endif
                                 </div>
                                 <div class="tp-accountForm form-style">
                                     <div class="fromTitle">
