@@ -167,3 +167,5 @@ Route::get('/send/newsletter/{id}',[SubscriberController::class,'send_newsletter
 //Password Reset System
 Route::get('password/reset',[PasswordResetController::class,'password_reset'])->name('password.reset');
 Route::post('/password/reset/request',[PasswordResetController::class,'passwordreset_request'])->name('passwordreset.request');
+Route::get('/password/reset/form/{token}',[PasswordResetController::class,'passwordreset_form'])->name('passwordreset.form');
+Route::post('/password/reset/confirm/{token}',[PasswordResetController::class,'password_reset_confirm'])->name('password.reset.confirm');

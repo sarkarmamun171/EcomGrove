@@ -50,12 +50,12 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form class="tp-accountWrapper" action="{{ route('passwordreset.request') }}" method="POST">
+                            <form class="tp-accountWrapper" action="{{ route('password.reset.confirm',$token) }}" method="POST">
                                 @csrf
                                 <div class="tp-accountInfo">
                                     <div class="tp-accountInfoHeader">
                                         <a href="index.html"><img src="{{ asset('frontend') }}/images/logo-2.svg" alt=""> </a>
-                                        <a class="tp-accountBtn" href="register.html">
+                                        <a class="tp-accountBtn" href="{{ route('customer.register') }}">
                                             <span class="">Create Account</span>
                                         </a>
                                     </div>
@@ -63,7 +63,7 @@
                                         <img src="{{ asset('frontend') }}/images/login.svg" alt="">
                                     </div>
                                     <div class="back-home">
-                                        <a class="tp-accountBtn" href="index.html">
+                                        <a class="tp-accountBtn" href="{{ route('index') }}">
                                             <span class="">Back To Home</span>
                                         </a>
                                     </div>
@@ -71,29 +71,23 @@
                                 </div>
                                 <div class="tp-accountForm form-style">
                                     <div class="fromTitle">
-                                        @if (session('exist'))
-                                        <div class="alert alert-warning">{{ session('exist') }}</div>
-                                    @endif
-                                    @if (session('success'))
-                                        <div class="alert alert-success">{{ session('success') }}</div>
-                                    @endif
                                         <h2>Reset Password</h2>
-                                        <p>Sign into your pages account</p>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-12">
-                                            <label>Email</label>
-                                            <input type="text" id="email" name="email" placeholder="demo@gmail.com">
+                                            <label>New Password</label>
+                                            <input type="password" id="password" name="password">
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-12">
-                                            <button type="submit" class="tp-accountBtn">Resend Password</button>
+                                            <label>Confirm Password</label>
+                                            <input type="password" id="password" name="password_confirmed">
+                                        </div>
+                                        {{-- <input type="hidden" value="{{ $token }}"> --}}
+                                        <div class="col-lg-12 col-md-12 col-12">
+                                            <button type="submit" class="tp-accountBtn">Reset Password</button>
                                         </div>
                                     </div>
-
-                                    <p class="subText">Don't have an account? <a href="{{ route('customer.register') }}">Create free
-                                            account</a></p>
                                 </div>
-
                             </form>
                         </div>
                     </div>
