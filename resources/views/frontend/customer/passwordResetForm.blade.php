@@ -79,10 +79,16 @@
                                         <div class="col-lg-12 col-md-12 col-12">
                                             <label>New Password</label>
                                             <input type="password" id="password" name="password">
+                                            @error('password')
+                                                <strong class="text-danger">{{ $message }}</strong>
+                                            @enderror
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-12">
                                             <label>Confirm Password</label>
                                             <input type="password" id="password" name="password_confirmed">
+                                            @error('password_confirmed')
+                                                <strong class="text-danger">{{ $message }}</strong>
+                                            @enderror
                                         </div>
                                         {{-- <input type="hidden" value="{{ $token }}"> --}}
                                         <div class="col-lg-12 col-md-12 col-12">

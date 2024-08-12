@@ -63,7 +63,7 @@
                                         <img src="{{ asset('frontend') }}/images/login.svg" alt="">
                                     </div>
                                     <div class="back-home">
-                                        <a class="tp-accountBtn" href="index.html">
+                                        <a class="tp-accountBtn" href="{{ route('index') }}">
                                             <span class="">Back To Home</span>
                                         </a>
                                     </div>
