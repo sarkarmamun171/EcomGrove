@@ -67,14 +67,15 @@
                                             <span class="">Back To Home</span>
                                         </a>
                                     </div>
-                                    @if (session('success_pass'))
-                                        <div class="alert alert-info">{{ session('success_pass') }}</div>
-                                    @endif
+
                                 </div>
                                 <div class="tp-accountForm form-style">
                                     <div class="fromTitle">
                                         <h2>Reset Password</h2>
                                     </div>
+                                    @if (session('pass_reset'))
+                                        <div class="alert alert-info">{{ session('pass_reset') }}</div>
+                                    @endif
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-12">
                                             <label>New Password</label>
@@ -95,6 +96,9 @@
                                             <button type="submit" class="tp-accountBtn">Reset Password</button>
                                         </div>
                                     </div>
+                                    @if (session('success_pass'))
+                                    <div class="alert alert-info">{{ session('success_pass') }}</div>
+                                @endif
                                 </div>
                             </form>
                         </div>

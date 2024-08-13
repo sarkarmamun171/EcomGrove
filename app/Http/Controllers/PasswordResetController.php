@@ -39,11 +39,15 @@ class PasswordResetController extends Controller
         $request->validate([
             'password'=>'required',
         ]);
-        $customer_id = Password_reset::where('token',$token)->first()->customer_id;
-        Customer::find($customer_id)->update([
-            'password'=>bcrypt($request->password),
-            'updated_at'=>Carbon::now(),
-        ]);
+        $customer = Password_reset::where('token',$token)->first();
+        if ($customer !='') {
+            Customer::find($customer->customer_id)->update([
+                'password'=>bcrypt($request->password),
+                'updated_at'=>Carbon::now(),
+            ]);
+        }else{
+            return back()->with('pass_reset',"Password Reset Already");
+        }
 
         Password_reset::where('token',$token)->delete();
         return back()->with('success_pass',"Password Reset Successfully");

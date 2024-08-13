@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\EmailVerify;
+use App\Notifications\CustomerEmailVerifyNotification;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Notification;
 
 class CustomerAuthController extends Controller
 {
@@ -27,14 +30,19 @@ class CustomerAuthController extends Controller
             'password' => Password::min(8)->letters()->mixedCase()->numbers()->symbols(),
             'password_confirmation' => 'required',
         ]);
-        Customer::insert([
+        $customer_id=Customer::insertGetId([
             'fname' => $request->fname,
             'lname' => $request->lname,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'created_at' => Carbon::now(),
         ]);
-        return back()->with('success', 'Registration Successfull');
+        $emailVerifyInfo =EmailVerify::create([
+            'customer_id'=>$customer_id,
+            'token'=>uniqid(),
+            'created_at'=>Carbon::now()
+        ]);
+        Notification::send($request->email, new CustomerEmailVerifyNotification($emailVerifyInfo));
     }
     public function customer_confirmation_login(Request $request)
     {
@@ -53,5 +61,5 @@ class CustomerAuthController extends Controller
             return back()->with('exists', 'Email or Password Invalid');
         }
     }
-    
+
 }
