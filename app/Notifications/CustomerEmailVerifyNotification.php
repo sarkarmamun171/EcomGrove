@@ -14,9 +14,10 @@ class CustomerEmailVerifyNotification extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public $data;
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -35,9 +36,9 @@ class CustomerEmailVerifyNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+        ->view('frontend.customer.emailVerify',[
+            'token'=>$this->data->token,
+        ]);
     }
 
     /**

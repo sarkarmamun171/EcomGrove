@@ -69,6 +69,9 @@
                                 @if (session('success'))
                                     <div class="alert alert-info">{{ session('success') }}</div>
                                 @endif
+                                @if (session('verified'))
+                                    <div class="alert alert-info">{{ session('verified') }}</div>
+                                @endif
                                 <div class="fromTitle">
                                     <h2>Signup</h2>
                                     <p>Sign into your pages account</p>

@@ -169,3 +169,6 @@ Route::get('password/reset',[PasswordResetController::class,'password_reset'])->
 Route::post('/password/reset/request',[PasswordResetController::class,'passwordreset_request'])->name('passwordreset.request');
 Route::get('/password/reset/form/{token}',[PasswordResetController::class,'passwordreset_form'])->name('passwordreset.form');
 Route::post('/password/reset/confirm/{token}',[PasswordResetController::class,'password_reset_confirm'])->name('password.reset.confirm');
+
+//Email Verification
+Route::get('/email/verification/{token}',[CustomerAuthController::class,'email_verification'])->name('email.verification');

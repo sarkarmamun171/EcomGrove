@@ -37,12 +37,16 @@ class CustomerAuthController extends Controller
             'password' => bcrypt($request->password),
             'created_at' => Carbon::now(),
         ]);
+        $customer= Customer::find($customer_id);
+        EmailVerify::where('customer_id',$customer_id)->delete();
         $emailVerifyInfo =EmailVerify::create([
             'customer_id'=>$customer_id,
             'token'=>uniqid(),
             'created_at'=>Carbon::now()
         ]);
-        Notification::send($request->email, new CustomerEmailVerifyNotification($emailVerifyInfo));
+
+        Notification::send($customer, new CustomerEmailVerifyNotification($emailVerifyInfo));
+        return back()->with('success',"Registered ! A verification link sent to $request->email Please Verify to Login");
     }
     public function customer_confirmation_login(Request $request)
     {
@@ -60,6 +64,14 @@ class CustomerAuthController extends Controller
         } else {
             return back()->with('exists', 'Email or Password Invalid');
         }
+    }
+    public function email_verification($token){
+        $customer_id = EmailVerify::find('token',$token)->first()->customer_id;
+        Customer::find($customer_id)->update([
+            'email_verified_at'=>Carbon::now(),
+        ]);
+       // EmailVerify::find('token',$token)->delete();
+        return redirect()->route('customer.register')->with('verified','Congratulation Your Email has been verified');
     }
 
 }
