@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Size;
+use App\Models\Color;
 use App\Models\Product;
 use App\Models\Subcategory;
 use App\Models\Inventory;
@@ -87,5 +89,17 @@ class FrontendController extends Controller
             'updated_at'=>Carbon::now(),
         ]);
         return back();
+    }
+    public function shop(){
+        $products = Product::all();
+        $categories = Category::all();
+        $sizes =Size::all();
+        $colors = Color::all();
+        return view('frontend.shop',[
+            'products'=>$products,
+            'categories'=>$categories,
+            'sizes'=>$sizes,
+            'colors'=>$colors,
+        ]);
     }
 }

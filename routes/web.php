@@ -41,6 +41,7 @@ Route::get('/subcategory/product/{id}',[FrontendController::class,'subcategory_p
 Route::get('/product/details/{slug}',[FrontendController::class,'product_details'])->name('product.details');
 Route::post('/getSize',[FrontendController::class,'getSize']);
 Route::post('/getQuantity',[FrontendController::class,'getQuantity']);
+Route::get('/shop',[FrontendController::class,'shop'])->name('shop');
 
 Route::get('/dashboard', [HomeController::class,'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
