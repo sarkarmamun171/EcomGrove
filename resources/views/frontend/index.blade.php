@@ -189,7 +189,7 @@
                                         <del class="old-price">&#2547;{{ number_format($product->price) }}</del>
                                     </div>
                                     <div class="shop-btn">
-                                        <a class="theme-btn-s2" href="product.html">Shop Now</a>
+                                        <a class="theme-btn-s2" href="{{ route('product.details',$product->slug) }}">Shop Now</a>
                                     </div>
                                 </div>
                             </div>

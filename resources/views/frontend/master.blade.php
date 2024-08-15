@@ -138,7 +138,7 @@
                                 <div class="search-box">
                                     <div class="input-group">
                                         <input type="search" id="search_input" class="form-control" placeholder="What are you looking for?">
-                                        <button class="search-btn" type="submit"> <i class="fi flaticon-search"></i>
+                                        <button class="search-btn" type="button"> <i class="fi flaticon-search"></i>
                                         </button>
                                     </div>
                                 </div>

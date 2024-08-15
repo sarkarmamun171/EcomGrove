@@ -28,14 +28,14 @@
                             <div class="shop-filter-search">
                                 <form>
                                     <div>
-                                        <input type="text" class="form-control" placeholder="Search..">
-                                        <button type="submit"><i class="ti-search"></i></button>
+                                        <input id="search_input2" type="text" class="form-control" placeholder="Search..">
+                                        <button class="search-btn2" type="button"><i class="ti-search"></i></button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    <div class="filter-item">
+                    <div class="filter-item"> 
                         <div class="shop-filter-item category-widget">
                             <h2>Categories</h2>
                             <ul>
@@ -43,7 +43,7 @@
                                 <li>
                                     <label class="topcoat-radio-button__label">
                                         {{ $category->category_name }} <span>(21)</span>
-                                        <input type="radio" name="topcoat2">
+                                        <input class="category_id" type="radio" name="topcoat2" value="{{ $category->id }}" name="category_id">
                                         <span class="topcoat-radio-button"></span>
                                     </label>
                                 </li>
@@ -88,7 +88,7 @@
                                 <li>
                                     <label class="topcoat-radio-button__label">
                                         {{ $color->color_name }} <span>(21)</span>
-                                        <input type="radio" name="topcoat2">
+                                        <input class="color_id" type="radio" name="topcoat2" value="{{ $color->id }}">
                                         <span class="topcoat-radio-button"></span>
                                     </label>
                                 </li>
@@ -104,7 +104,7 @@
                                 <li>
                                     <label class="topcoat-radio-button__label">
                                         {{ $size->size_name }} <span>(10)</span>
-                                        <input type="radio" name="topcoat3">
+                                        <input class="size_id" type="radio" name="topcoat3" value="{{ $size->id }}">
                                         <span class="topcoat-radio-button"></span>
                                     </label>
                                 </li>
@@ -239,7 +239,7 @@
                                     <div class="tag new">New</div>
                                 </div>
                                 <div class="text">
-                                    <h2><a href="product-single.html" title="{{ $product->product_name }}">
+                                    <h2><a href="{{ route('product.details',$product->slug) }}" title="{{ $product->product_name }}">
                                          @if (strlen($product->product_name)>20)
                                         {{ Str::substr($product->product_name,0,20).'....' }}
                                     </a>
@@ -260,7 +260,7 @@
                                         <del class="old-price">&#2547;{{ $product->price }}</del>
                                     </div>
                                     <div class="shop-btn">
-                                        <a class="theme-btn-s2" href="">Shop Now</a>
+                                        <a class="theme-btn-s2" href="{{ route('product.details',$product->slug) }}">Shop Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -279,6 +279,11 @@
     $('.search-btn').click(function(){
         var search_input =$('#search_input').val();
         var link ="{{ route('shop') }}"+"?search_input="+search_input;
+        window.location.href = link;
+    });
+    $('.search-btn2').click(function(){
+        var search_input2 =$('#search_input2').val();
+        var link ="{{ route('shop') }}"+"?search_input="+search_input2;
         window.location.href = link;
     });
 </script>

@@ -8,7 +8,7 @@
                     <div class="wpo-breadcumb-wrap">
                         <ol class="wpo-breadcumb-wrap">
                             <li><a href="{{ route('index') }}">Home</a></li>
-                            <li><a href="product.html">Product</a></li>
+                            <li><a href="{{ route('shop') }}">Product</a></li>
                             <li>Product Details</li>
                         </ol>
                     </div>
