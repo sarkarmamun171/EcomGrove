@@ -35,7 +35,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="filter-item"> 
+                    <div class="filter-item">
                         <div class="shop-filter-item category-widget">
                             <h2>Categories</h2>
                             <ul>
@@ -43,7 +43,7 @@
                                 <li>
                                     <label class="topcoat-radio-button__label">
                                         {{ $category->category_name }} <span>(21)</span>
-                                        <input class="category_id" type="radio" name="topcoat2" value="{{ $category->id }}" name="category_id">
+                                        <input class="category_id" type="radio" value="{{ $category->id }}" name="category_id">
                                         <span class="topcoat-radio-button"></span>
                                     </label>
                                 </li>
@@ -88,7 +88,7 @@
                                 <li>
                                     <label class="topcoat-radio-button__label">
                                         {{ $color->color_name }} <span>(21)</span>
-                                        <input class="color_id" type="radio" name="topcoat2" value="{{ $color->id }}">
+                                        <input class="color_id" type="radio" name="color_id" value="{{ $color->id }}">
                                         <span class="topcoat-radio-button"></span>
                                     </label>
                                 </li>
@@ -104,7 +104,7 @@
                                 <li>
                                     <label class="topcoat-radio-button__label">
                                         {{ $size->size_name }} <span>(10)</span>
-                                        <input class="size_id" type="radio" name="topcoat3" value="{{ $size->id }}">
+                                        <input class="size_id" type="radio" name="size_id" value="{{ $size->id }}">
                                         <span class="topcoat-radio-button"></span>
                                     </label>
                                 </li>
@@ -278,7 +278,8 @@
 <script>
     $('.search-btn').click(function(){
         var search_input =$('#search_input').val();
-        var link ="{{ route('shop') }}"+"?search_input="+search_input;
+        var category_id = $("input[type='radio'][name='category_id']:checked").val();
+        var link ="{{ route('shop') }}"+"?search_input="+search_input+"$category_id="+category_id;
         window.location.href = link;
     });
     $('.search-btn2').click(function(){

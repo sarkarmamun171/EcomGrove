@@ -94,12 +94,17 @@ class FrontendController extends Controller
         $data = $request->all();
         $products = Product::where(function($q) use ($data){
             if (!empty($data['search_input']) && $data['search_input']!='' && $data['search_input'] !='undefined') {
-                $q->where(function($q) use ($data){
+                $q->where(function ($q) use ($data){
                     $q->where('product_name','like','%'.$data['search_input'].'%');
                     $q->orWhere('short_description','like','%'.$data['search_input'].'%');
                     $q->orWhere('tags','like','%'.$data['search_input'].'%');
                     $q->orWhere('long_description','like','%'.$data['search_input'].'%');
                     $q->orWhere('additional_information','like','%'.$data['search_input'].'%');
+                });
+            }
+            if(!empty($data['category_id']) && $data['category_id'] != '' && $data['category_id']!='undefined' ){
+                $q->where(function($q) use ($data){
+                    $q->where('category_id', $data['category_id']);
                 });
             }
         })->get();
