@@ -92,6 +92,9 @@ class FrontendController extends Controller
         ]);
         return back();
     }
+    public function about(){
+        return view('frontend.about');
+    }
     public function shop(Request $request)
     {
         $data = $request->all();
