@@ -43,7 +43,7 @@ Route::post('/getSize',[FrontendController::class,'getSize']);
 Route::post('/getQuantity',[FrontendController::class,'getQuantity']);
 Route::get('/shop',[FrontendController::class,'shop'])->name('shop');
 Route::get('/about',[FrontendController::class,'about'])->name('about');
-
+Route::get('/faq',[FrontendController::class,'faq'])->name('faq');
 
 Route::get('/dashboard', [HomeController::class,'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
