@@ -20,4 +20,7 @@ class Product extends Model
     public function rel_to_brand(){
         return $this->belongsTo(Brand::class,'brand_id');
     }
+    public function rel_to_inventory(){
+        return $this->hasMany(Inventory::class,'product_id');
+    }
 }
