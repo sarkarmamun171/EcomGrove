@@ -8,7 +8,7 @@
                     <div class="col col-xs-12">
                         <div class="wpo-breadcumb-wrap">
                             <ol class="wpo-breadcumb-wrap">
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="{{ route('index') }}">Home</a></li>
                                 <li>Shop</li>
                             </ol>
                         </div>
@@ -44,7 +44,7 @@
                                             <li>
                                                 <label class="topcoat-radio-button__label">
                                                     {{ $category->category_name }} <span>{{ App\Models\Product::where('category_id', $category->id)->count() }}</span>
-                                                    <input {{ $category->id== @$_GET['category_id']?'checked':'' }} name="category_id" class="category_id" type="radio" name="topcoat2" value="{{ $category->id }}">
+                                                    <input {{ $category->id== @$_GET['category_id']?'checked':'' }} name="category_id" class="category_id" type="radio" value="{{ $category->id }}">
                                                     <span class="topcoat-radio-button"></span>
                                                 </label>
                                             </li>
@@ -244,7 +244,7 @@
                                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="product-item">
                                             <div class="image">
-                                                <img height="200" src="{{asset('uploads/product/preview')}}/{{ $product->preview }}" alt="product">
+                                                <img height="200" src="{{asset('uploads/product/previewImage')}}/{{ $product->preview_image }}" alt="product">
                                                 <div class="tag new">New</div>
                                             </div>
                                             <div class="text">
