@@ -20,6 +20,7 @@ use App\Models\Subcategory;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\SubscriberController;
+use App\Http\Controllers\TagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -137,6 +138,9 @@ Route::get('/coupon',[CouponController::class,'index'])->name('coupon');
 Route::post('/coupon/store',[CouponController::class,'coupon_store'])->name('coupon.store');
 Route::get('coupon/delete/{id}',[CouponController::class,'coupon_delete'])->name('coupon.delete');
 
+//tag
+Route::get('admin/tag',[TagController::class,'tag'])->name('tag');
+Route::post('admin/tag/store',[TagController::class,'tag_store'])->name('tag.store');
 //Check Out
 Route::get('/checkout',[CheckoutController::class,'checkout'])->name('checkout');
 Route::post('/getCity',[CheckoutController::class,'getCity']);

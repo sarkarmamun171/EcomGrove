@@ -1103,6 +1103,11 @@
                             <span class="nav-text">Subscriber</span>
                         </a>
                     </li>
+                    <li><a class="#" href="{{ route('tag') }}">
+                        <i class="fa-solid fa-tag"></i>
+                            <span class="nav-text">Tag</span>
+                        </a>
+                    </li>
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-381-layer-1"></i>
                             <span class="nav-text">Pages</span>
