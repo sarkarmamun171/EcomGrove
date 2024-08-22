@@ -1108,6 +1108,11 @@
                             <span class="nav-text">Tag</span>
                         </a>
                     </li>
+                    <li><a class="#" href="#">
+                        <i class="fa-solid fa-question"></i>
+                            <span class="nav-text">FAQ</span>
+                        </a>
+                    </li>
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-381-layer-1"></i>
                             <span class="nav-text">Pages</span>
