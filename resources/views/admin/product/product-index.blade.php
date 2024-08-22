@@ -84,8 +84,18 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-3">
-                                <label for="" class="form-label">Tags</label>
-                                <input required type="text" name="tags[]" class="form-control" id="input-tags">
+                                {{-- <label for="" class="form-label">Tags</label>
+                                <input required type="text" name="tags[]" class="form-control" id="input-tags"> --}}
+                                <select name="tags[]" id="select_gear" class="demo-default" multiple placeholder="Select Tag...">
+                                    <optgroup>
+                                        @foreach ($tags as $tag)
+                                            <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
+                                        @endforeach
+                                    </optgroup>
+                                </select>
+                                @error('tags')
+                                    <strong class="text-danger">{{$message}}</strong>
+                                @enderror
                             </div>
 
                         </div>
@@ -260,5 +270,8 @@
                 $(this).parent().parent().remove();
             });
         }
+    </script>
+      <script>
+        $('#select_gear').selectize({ sortField: 'text' })
     </script>
 @endsection
