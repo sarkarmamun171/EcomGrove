@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Subcategory;
 use App\Models\Inventory;
 use App\Models\Orderproduct;
+use App\Models\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -210,11 +211,13 @@ class FrontendController extends Controller
         $categories = Category::all();
         $sizes = Size::all();
         $colors = Color::all();
+        $tags = Tag::all();
         return view('frontend.shop', [
             'products' => $products,
             'categories' => $categories,
             'sizes' => $sizes,
             'colors' => $colors,
+            'tags' => $tags,
         ]);
     }
 }

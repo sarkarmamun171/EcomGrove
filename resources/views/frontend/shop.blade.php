@@ -190,7 +190,7 @@
                                 <div class="shop-filter-item tag-widget">
                                     <h2>Popular Tags</h2>
                                     <ul>
-                                        {{-- @foreach ($tags as $tag)
+                                        @foreach ($tags as $tag)
                                             <li>
                                                 <label class="topcoat-radio-button_label" style="margin-left:25px">
                                                     {{ $tag->tag }}
@@ -198,7 +198,7 @@
                                                     <span class="topcoat-radio-button"></span>
                                                 </label>
                                             </li>
-                                        @endforeach --}}
+                                        @endforeach
                                     </ul>
                                     {{-- <ul>
                                         @foreach ($tags as $tags )
