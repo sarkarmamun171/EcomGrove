@@ -221,6 +221,6 @@ class FrontendController extends Controller
         ]);
     }
     public function recent_view(){
-
+        return view('frontend.recent_view');
     }
 }
