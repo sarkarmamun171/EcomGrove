@@ -220,4 +220,7 @@ class FrontendController extends Controller
             'tags' => $tags,
         ]);
     }
+    public function recent_view(){
+
+    }
 }
