@@ -8,7 +8,7 @@
                 <div class="col col-xs-12">
                     <div class="wpo-breadcumb-wrap">
                         <ol class="wpo-breadcumb-wrap">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="{{ route('index') }}">Home</a></li>
                             <li>Recently Viewed</li>
                         </ol>
                     </div>
@@ -38,11 +38,7 @@
                                     <div class="tag new">New</div>
                                 </div>
                                 <div class="text">
-                                    <h2><a title=""
-                                            href="#">
-
-
-                                        </a></h2>
+                                    <h2><a title="" href="#"> </a></h2>
                                     <div class="rating-product">
                                         <i class="fi flaticon-star"></i>
                                         <i class="fi flaticon-star"></i>
@@ -56,8 +52,7 @@
                                         <del class="old-price"></del>
                                     </div>
                                     <div class="shop-btn">
-                                        <a class="theme-btn-s2" href="#">Shop
-                                            Now</a>
+                                        <a class="theme-btn-s2" href="#">Shop Now</a>
                                     </div>
                                 </div>
                             </div>

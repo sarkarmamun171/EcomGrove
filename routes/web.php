@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\TagController;
-use App\Http\Controllers\WishlistController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -183,4 +183,4 @@ Route::post('/password/reset/confirm/{token}',[PasswordResetController::class,'p
 Route::get('/email/verification/{token}',[CustomerAuthController::class,'email_verification'])->name('email.verification');
 
 //WishListt
-Route::getish('/wishlist/store',[WishlistController::class,'wishlist_store'])->name('wishlist.store');
+// Route::getish('/wishlist/store',[WishlistController::class,'wishlist_store'])->name('wishlist.store');
