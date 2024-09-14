@@ -7,39 +7,39 @@
                 <div class="hero-slider">
                     <div class="hero-slider-item">
                         <div class="slider-bg">
-                            <img src="{{ asset('frontend') }}/images/slider/slide-1.jpg" alt="">
+                            <img src="{{ asset('frontend') }}/images/slider/image03.webp" alt="">
                         </div>
-                        <div class="slider-content">
+                        {{-- <div class="slider-content">
                             <div class="slide-title">
                                 <h2>Trendy & Unique
                                     Collection</h2>
                             </div>
                             <a class="theme-btn" href="product.html">Shop Now</a>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="hero-slider-item">
                         <div class="slider-bg">
-                            <img src="{{ asset('frontend') }}/images/slider/slide-2.jpg" alt="">
+                            <img src="{{ asset('frontend') }}/images/slider/image01.webp" alt="">
                         </div>
-                        <div class="slider-content">
+                        {{-- <div class="slider-content">
                             <div class="slide-title">
                                 <h2>Trendy & Unique
                                     Collection</h2>
                             </div>
                             <a class="theme-btn" href="product.html">Shop Now</a>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="hero-slider-item">
                         <div class="slider-bg">
-                            <img src="{{ asset('frontend') }}/images/slider/slide-3.jpg" alt="">
+                            <img src="{{ asset('frontend') }}/images/slider/image04.webp" alt="">
                         </div>
-                        <div class="slider-content">
+                        {{-- <div class="slider-content">
                             <div class="slide-title">
                                 <h2>Trendy & Unique
                                     Collection</h2>
                             </div>
                             <a class="theme-btn" href="product.html">Shop Now</a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -117,7 +117,7 @@
                                 <div class="count-up">
                                     <div id="clock"></div>
                                 </div>
-                                <a class="theme-btn-s2" href="product.html">Shop Now</a>
+                                <a class="theme-btn-s2" href="#">Shop Now</a>
                             </div>
 
                         </div>
@@ -127,7 +127,7 @@
                             <div class="text">
                                 <h2>New Year Sale</h2>
                                 <h4>Up To 70% Off</h4>
-                                <a class="theme-btn-s2" href="product.html">Shop Now</a>
+                                <a class="theme-btn-s2" href="#">Shop Now</a>
                             </div>
                         </div>
                     </div>
