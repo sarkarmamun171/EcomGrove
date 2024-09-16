@@ -205,7 +205,7 @@
         <!-- end of themart-interestproduct-section -->
 
         <!-- start of themart-upcoming-offer-section -->
-        <section class="themart-upcoming-offer-section section-padding">
+        {{-- <section class="themart-upcoming-offer-section section-padding">
             <div class="container">
                 <div class="upcoming-offer">
                     <div class="left-shape">
@@ -271,7 +271,7 @@
 
                 </div>
             </div>
-        </section>
+        </section> --}}
         <!-- end of themart-upcoming-offer-section -->
 
         <!-- start of themart-special-product-section -->
