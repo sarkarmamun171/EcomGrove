@@ -7,7 +7,7 @@
                 <div class="col col-xs-12">
                     <div class="wpo-breadcumb-wrap">
                         <ol class="wpo-breadcumb-wrap">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="{{ route('index') }}">Home</a></li>
                             <li>{{ $category->category_name }}</li>
                         </ol>
                     </div>
