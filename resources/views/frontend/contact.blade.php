@@ -7,7 +7,7 @@
             <div class="col col-xs-12">
                 <div class="wpo-breadcumb-wrap">
                     <ol class="wpo-breadcumb-wrap">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="{{ route('index') }}">Home</a></li>
                         <li>Contact</li>
                     </ol>
                 </div>
@@ -33,7 +33,7 @@
                                         </div>
                                         <div class="office-info-text">
                                             <h2>Address</h2>
-                                            <p>7 Green Lake Street Crawfordsville, IN 47933</p>
+                                            <p>Nikunjo-2,khilkhet,Dhaka</p>
                                         </div>
                                     </div>
                                 </div>
@@ -60,8 +60,8 @@
                                         </div>
                                         <div class="office-info-text">
                                             <h2>Call Now</h2>
-                                            <p>+1 800 123 456 789</p>
-                                            <p>+1 800 123 654 987</p>
+                                            <p>01827 222210</p>
+                                            <p>01580 879868</p>
                                         </div>
                                     </div>
                                 </div>
@@ -123,9 +123,7 @@
         <section class="wpo-contact-map-section">
             <h2 class="hidden">Contact map</h2>
             <div class="wpo-contact-map">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.9147703055!2d-74.11976314309273!3d40.69740344223377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sbd!4v1547528325671"
-                    allowfullscreen></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7299.283753613187!2d90.42125349048455!3d23.831330578578736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c6422bc83d21%3A0x3a1bc96ce9f8ad8b!2sKhilkhet%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1726596520194!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </section>
         <!-- end wpo-contact-map -->
