@@ -105,7 +105,7 @@ class FrontendController extends Controller
 
         // $min = 1;
         // $max = Products::max('after_discount');
-        
+
         // if(!empty($data['min']) && $data['min'] != '' && $data['min']!='undefined'){
         //     $min = $data['min'];
         // }
@@ -221,5 +221,8 @@ class FrontendController extends Controller
     }
     public function recent_view(){
         return view('frontend.recent_view');
+    }
+    public function contact(){
+        return view('frontend.contact');
     }
 }
