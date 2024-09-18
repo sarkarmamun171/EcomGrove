@@ -25,7 +25,7 @@
             <div class="col-lg-6 col-md-12 col-12">
                 <div class="wpo-about-wrap">
                     <div class="wpo-about-img">
-                        <img src="{{ asset('frontend') }}/images/about.jpg" alt="">
+                        <img src="{{ asset('frontend') }}/images/about01.webp" alt="">
                     </div>
                 </div>
             </div>
@@ -111,9 +111,9 @@
                     <div class="portfolio-grids gallery-container clearfix">
                         <div class="grid">
                             <div class="img-holder">
-                                <a href="{{ asset('frontend') }}/images/portfolio/1.jpg" class="fancybox"
+                                <a href="{{ asset('frontend') }}/images/portfolio/05.webp" class="fancybox"
                                     data-fancybox-group="gall-1">
-                                    <img src="{{ asset('frontend') }}/images/portfolio/1.jpg" alt class="img img-responsive">
+                                    <img src="{{ asset('frontend') }}/images/portfolio/05.webp" alt class="img img-responsive">
                                     <div class="hover-content">
                                         <i class="fi flaticon-eye"></i>
                                     </div>
@@ -122,9 +122,9 @@
                         </div>
                         <div class="grid">
                             <div class="img-holder">
-                                <a href="{{ asset('frontend') }}/images/portfolio/2.jpg" class="fancybox"
+                                <a href="{{ asset('frontend') }}/images/portfolio/about03.webp" class="fancybox"
                                     data-fancybox-group="gall-1">
-                                    <img src="{{ asset('frontend') }}/images/portfolio/2.jpg" alt class="img img-responsive">
+                                    <img src="{{ asset('frontend') }}/images/portfolio/about03.webp" alt class="img img-responsive">
                                     <div class="hover-content">
                                         <i class="fi flaticon-eye"></i>
                                     </div>
@@ -133,9 +133,9 @@
                         </div>
                         <div class="grid">
                             <div class="img-holder">
-                                <a href="{{ asset('frontend') }}/images/portfolio/4.jpg" class="fancybox"
+                                <a href="{{ asset('frontend') }}/images/portfolio/about04.jpeg" class="fancybox"
                                     data-fancybox-group="gall-1">
-                                    <img src="{{ asset('frontend') }}/images/portfolio/4.jpg" alt class="img img-responsive">
+                                    <img src="{{ asset('frontend') }}/images/portfolio/about04.jpeg" alt class="img img-responsive">
                                     <div class="hover-content">
                                         <i class="fi flaticon-eye"></i>
                                     </div>
@@ -144,9 +144,9 @@
                         </div>
                         <div class="grid">
                             <div class="img-holder">
-                                <a href="{{ asset('frontend') }}/images/portfolio/3.jpg" class="fancybox"
+                                <a href="{{ asset('frontend') }}/images/portfolio/about05.webp" class="fancybox"
                                     data-fancybox-group="gall-1">
-                                    <img src="{{ asset('frontend') }}/images/portfolio/3.jpg" alt class="img img-responsive">
+                                    <img src="{{ asset('frontend') }}/images/portfolio/about05.webpfoo" alt class="img img-responsive">
                                     <div class="hover-content">
                                         <i class="fi flaticon-eye"></i>
                                     </div>

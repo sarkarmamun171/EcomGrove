@@ -389,9 +389,8 @@
                                 <div class="contact-ft">
                                     <ul>
                                         <li><i class="fi flaticon-mail"></i>themart@gmail.com</li>
-                                        <li><i class="fi flaticon-phone"></i>(208) 555-0112 <br>(704) 555-0127</li>
-                                        <li><i class="fi flaticon-pin"></i>4517 Washington Ave. Manchter,
-                                            Kentucky 495</li>
+                                        <li><i class="fi flaticon-phone"></i>01827 222210 <br>01580879868</li>
+                                        <li><i class="fi flaticon-pin"></i>Nijunjo-2,Khilkhet,Dhaka</li>
                                     </ul>
                                 </div>
                             </div>
