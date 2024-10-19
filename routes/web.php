@@ -63,7 +63,7 @@ require __DIR__.'/auth.php';
 
 //Admin Profile Introduce
 
-Route::get('/user/profile',[HomeController::class,'user_profile'])->name('user,profile');
+Route::get('/user/profile',[HomeController::class,'user_profile'])->name('user.profile');
 Route::post('/user/profile/update',[HomeController::class,'user_profile_update'])->name('user.profile.update');
 Route::post('/user/password/update',[HomeController::class,'user_password_update'])->name('user.password.update');
 Route::post('/user/profile/photo',[HomeController::class,'user_profile_photo'])->name('user.profile.photo');
