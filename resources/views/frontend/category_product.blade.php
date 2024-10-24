@@ -39,7 +39,7 @@
                                     @endif
                                 </div>
                                 <div class="text">
-                                    <h2><a href="product-single.html">{{ $product_cate->product_name }}</a></h2>
+                                    <h2><a href="{{ route('product.details',$product_cate->slug) }}">{{ $product_cate->product_name }}</a></h2>
                                     <div class="rating-product">
                                         <i class="fi flaticon-star"></i>
                                         <i class="fi flaticon-star"></i>
@@ -53,7 +53,7 @@
                                         <del class="old-price">&#2547;{{ number_format($product_cate->price) }}</del>
                                     </div>
                                     <div class="shop-btn">
-                                        <a class="theme-btn-s2" href="product.html">Shop Now</a>
+                                        <a class="theme-btn-s2" href="{{ route('product.details',$product_cate->slug) }}">Shop Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
                         </div>
                     @endforelse
                     <div class="more-btn">
-                        <a class="theme-btn-s2" href="product.html">Load More</a>
+                        <a class="theme-btn-s2" href="#">Load More</a>
                     </div>
                 </div>
             </div>
