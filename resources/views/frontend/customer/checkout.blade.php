@@ -233,16 +233,16 @@
                                                                 value="1">
                                                             <label for="remove">Cash on Delivery</label>
                                                         </li>
-                                                        <li class="">
+                                                        {{-- <li class="">
                                                             <input id="add" type="radio" name="payment_method"
                                                                 value="2">
                                                             <label for="add">Pay With SSLCOMMERZ</label>
-                                                        </li>
-                                                        <li class="">
+                                                        </li> --}}
+                                                        {{-- <li class="">
                                                             <input id="getway" type="radio" name="payment_method"
                                                                 value="3">
                                                             <label for="getway">Pay With STRIPE</label>
-                                                        </li>
+                                                        </li> --}}
                                                     </ul>
                                                 </div>
                                                 <input type="hidden" name="discount" value="{{ session('discount') }}">
